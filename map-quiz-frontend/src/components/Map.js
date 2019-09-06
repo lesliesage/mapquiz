@@ -12,7 +12,12 @@ const Map = withScriptjs(
     <GoogleMap
       defaultZoom={2.3}
       defaultCenter={{ lat: 25, lng: 0 }}
-      defaultOptions={{ styles: MapOptions, maxZoom: 7, minZoom: 2.3 }}
+      defaultOptions={{
+        styles: MapOptions,
+        maxZoom: 7,
+        minZoom: 2.3,
+        gestureHandling: "cooperative"
+      }}
     >
       {/* {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />} */}
     </GoogleMap>
