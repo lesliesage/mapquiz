@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # Ignore file containing API KEY for google maps.
-map-quiz-frontend/src/APIKEY.js
+/src/APIKEY.js
