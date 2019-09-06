@@ -41,7 +41,12 @@ const Map = withScriptjs(
       <GoogleMap
       defaultZoom={2.3}
       defaultCenter={{ lat: 25, lng: 0 }}
-      defaultOptions={{ styles: MapOptions, maxZoom: 7, minZoom: (2.3), gestureHandling: 'cooperative'}}
+      defaultOptions={{
+        styles: MapOptions,
+        maxZoom: 7,
+        minZoom: 2.3,
+        gestureHandling: "cooperative"
+      }}
       onClick={handleClick}
       >
         {<Marker position={markP} />} */}
