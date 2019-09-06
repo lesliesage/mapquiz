@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from "react";
 
-class LoginContainer extends React.Component {
-
-    render(){
-        return(
-            <div></div>
-        )
-    }
+class LoginContainer extends Component {
+  state = {};
+  render() {
+    return <div>LoginContainer Here</div>;
+  }
 }
+
+export default LoginContainer;
