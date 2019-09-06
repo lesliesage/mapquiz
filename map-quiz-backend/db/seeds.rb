@@ -1,3 +1,7 @@
+# TODO: Calculate game score based on question distances (instead of random)
+# TODO: Make sure questions are never duplicates within a game
+# TODO: Create bell curve for distances guessed
+
 User.destroy_all
 City.destroy_all
 Game.destroy_all
