@@ -10,17 +10,23 @@ class FormContainer extends React.Component {
         }
     }
 
+    loginChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     render() {
         return(
             <div className="ui equal width form">
                 <div className="fields">
                     <div className="field">
                     <label>Username</label>
-                    <input type="text" placeholder="Username"></input>
+                    <input onChange={this.loginChange} type="text" name='username' placeholder="Username"></input>
                     </div>
                     <div className="field">
                     <label>Password</label>
-                    <input type="password"></input>
+                    <input onChange={this.loginChange} name='password' type="password"></input>
                     </div>
                 </div>
             </div>
