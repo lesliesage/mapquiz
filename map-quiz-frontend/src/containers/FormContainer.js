@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 class FormContainer extends React.Component {
 
@@ -6,7 +7,8 @@ class FormContainer extends React.Component {
         super()
         this.state = {
             username: '',
-            password: ''
+            password: '',
+           
         }
     }
 
@@ -16,25 +18,97 @@ class FormContainer extends React.Component {
         })
     }
 
+    handleSubmitFindUser = () => {
+        fetch(`http://localhost:3000/users/${this.state.username}`).then(resp => resp.json()).then(user => {this.props.setUser(user)})
+    }
+
     render() {
         return(
-            <div className='ui form'>
-              
+            <Modal
+            open={this.props.hid}
+            centered={false}
+            onClose={this.props.toggleform}
+           
+          >
+            <Header icon='browser' content='Login' />
+            <Modal.Content>
+                <div className='ui form'>
+                    
                     <div className="field">
-                    <label>Username</label>
-                    <input onChange={this.loginChange} type="text" name='username' placeholder="Username"></input>
-                    </div>
-                    <div className="field">
-                    <label>Password</label>
-                    <input onChange={this.loginChange} name='password' type="password"></input>
-                    </div>
-               
-                <div className='ui submit button'>Play</div>
+                        <label>Username</label>
+                        <input onChange={this.loginChange} type="text" name='username' placeholder="Username"></input>
+                        </div>
+                        <div className="field">
+                        <label>Password</label>
+                        <input onChange={this.loginChange} name='password' type="password"></input>
+                        </div>
+                    
+                    <div className='ui submit button' onClick={this.handleSubmitFindUser}>Play</div>
             </div>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button color='red' onClick={this.props.toggleForm} >
+                Close
+              </Button>
+              <RegisterModal />
+            </Modal.Actions>
+          </Modal>
+            
            
         )
     }
 
+
+}
+
+class RegisterModal extends React.Component {
+
+    state = {registerOpen: false}
+  
+    open = () => this.setState({ open: true })
+    close = () => this.setState({ open: false })
+
+        render() {
+            const {open} = this.state
+        return (
+            <Modal
+              open={open}
+              onOpen={this.open}
+              onClose={this.close}
+              centered={false}
+              size='small'
+              trigger={
+                <Button>Register</Button>
+              }
+            >
+              <Modal.Header>Register</Modal.Header>
+              <Modal.Content>
+              <div className='ui form'>
+                    
+                    <div className="field">
+                        <label>Username</label>
+                        <input onChange={this.loginChange} type="text" name='username' placeholder="Username"></input>
+                        </div>
+
+                        <div className="field">
+                        <label>Password</label>
+                        <input onChange={this.loginChange} name='password' type="password"></input>
+                        </div>
+
+                        <div className="field">
+                        <label>Confirm Password</label>
+                        <input onChange={this.loginChange} name='confirm password' type="password"></input>
+                        </div>
+                    
+                    <div className='ui submit button'>Register</div>
+            </div>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button icon='check' content='Close' onClick={this.close} />
+              </Modal.Actions>
+            </Modal>
+          )
+    }
 
 }
 

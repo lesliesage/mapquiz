@@ -9,8 +9,8 @@ class Splash extends Component {
   render() {
     return (
       <div>
-        {this.props.hid ? console.log(true) : 
-        <FormContainer /> }
+        {/* {this.props.hid ? console.log(true) :  */}
+        <FormContainer hid={this.props.hid} setUser={this.props.setUser} toggleForm={this.props.toggleForm}/> 
         <video className="videoTag" autoPlay loop muted>
           <source src={Video} type="video/mp4" />
           <source src={Video} type="video/ogg" />
