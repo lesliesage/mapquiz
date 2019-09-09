@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import FormContainer from './FormContainer'
 
-class LoginContainer extends Component {
- 
+class Splash extends Component {
 
   render() {
-    return <div>LoginContainer Here
+    return <div>Splash Here
       <FormContainer />
     </div>;
   }
 }
 
-export default LoginContainer;
+export default Splash;
