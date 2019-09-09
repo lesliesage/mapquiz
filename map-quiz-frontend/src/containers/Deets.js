@@ -6,8 +6,10 @@ class Deets extends Component {
   render() {
     return (
       <div>
-        Deets Component Here
-        <Question />
+          {this.props.game ? 
+          this.props.game.questions.map(question => <Question key={question.id} question={question} />
+          ) : null
+        }
       </div>
     );
   }

@@ -31,3 +31,17 @@
     transform: rotate(360deg);
   }
 }
+
+#leader-grid {
+  margin: 2rem;
+}
+
+.stat-section {
+  border-color: black;
+  margin: 0 auto;
+  width: 30%;
+}
+
+.game-button {
+  margin-bottom: 20px;
+}
