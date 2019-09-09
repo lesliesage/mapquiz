@@ -8,12 +8,19 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends React.Component {
   state = {
-    hidden: true,
+    open: false,
     user: null
   };
 
+
+  setUser = (user) => {
+    this.setState({
+      user: user
+    })
+  }
+
   handleLoginClick = () => {
-    this.setState({ hidden: !this.state.hidden });
+    this.setState({ open: !this.state.open });
   };
 
   render() {
@@ -26,6 +33,7 @@ class App extends React.Component {
         <Router>
           <React.Fragment>
             <NavBar handleLoginClick={this.handleLoginClick} />
+<<<<<<< HEAD
             <Route exact path="/" render={(props) => 
               <Splash {...props} hid={this.state.hidden} user={this.state.user} />} 
             />
@@ -35,6 +43,11 @@ class App extends React.Component {
             <Route exact path="/stats" render={
               (props) => <StatsContainer {...props} user={this.state.user} />
             } />
+=======
+            <Route exact path="/" render={(props) => <Splash {...props} setUser={this.setUser} toggleForm={this.handleLoginClick} hid={this.state.open}/>} />
+            <Route exact path="/play" component={QuizContainer} />
+            <Route exact path="/stats" component={StatsContainer} />
+>>>>>>> bd9ff5206ec48477a534ef75a59de0110d90be39
           </React.Fragment>
         </Router>
       </div>
