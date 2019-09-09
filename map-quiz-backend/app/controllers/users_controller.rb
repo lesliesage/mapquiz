@@ -10,6 +10,12 @@ class UsersController < ApplicationController
         render json: user.to_json(user_serializer)
     end
 
+    def create
+        
+        User.create(params[:user])
+        render json: user.to_json(user_serializer)
+    end
+
     private
 
     def user_serializer
@@ -21,6 +27,10 @@ class UsersController < ApplicationController
         },
         :except => [:updated_at]
     }
+    end
+
+    def user_params
+        params.require(:user).permit(:username, :password)
     end
 
 

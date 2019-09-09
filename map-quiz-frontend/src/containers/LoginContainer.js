@@ -1,9 +1,15 @@
 import React, { Component } from "react";
+import FormContainer from './FormContainer'
 
 class LoginContainer extends Component {
-  state = {};
+  state = {
+    hidden: true
+  };
+  
   render() {
-    return <div>LoginContainer Here</div>;
+    return <div>LoginContainer Here
+      <FormContainer />
+    </div>;
   }
 }
 
