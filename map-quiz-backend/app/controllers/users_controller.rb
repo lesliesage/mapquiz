@@ -6,13 +6,11 @@ class UsersController < ApplicationController
     end
 
     def show 
-        user = User.find_by(username: params[:id])
-        
+        user = User.where('lower(username) = ?', params[:username])[0]
         render json: user.to_json(user_serializer)
     end
 
     def create
-        
         User.create(params[:user])
         render json: user.to_json(user_serializer)
     end
@@ -20,17 +18,20 @@ class UsersController < ApplicationController
     private
 
     def user_serializer
-        {:include => {
-            :games => {
-                :include => {:questions => {:except => [:created_at, :updated_at]}
-                }
-            }
-        },
-        :except => [:updated_at]
+        {:include => 
+            {:games => {:include => 
+                {:questions => {:include => 
+                        {:city => {:except => [:created_at, :updated_at]}},
+                        :except => [:created_at, :updated_at]
+                }}, 
+            :except => [:updated_at]
+            }},
+        :except => [:created_at, :updated_at]
     }
     end
 
     def user_params
+        byebug
         params.require(:user).permit(:username, :password)
     end
 

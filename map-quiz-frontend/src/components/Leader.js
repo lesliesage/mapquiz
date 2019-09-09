@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import { Grid } from "semantic-ui-react";
 
 class Leader extends Component {
   state = {};
   render() {
     return (
-      <div>
-        <p>
-          {this.props.game.user.username} - {this.props.game.score}
-        </p>
-      </div>
+      <React.Fragment>
+        <Grid.Column textAlign='right'>{this.props.index}.</Grid.Column>
+        <Grid.Column>{this.props.game.user.username}</Grid.Column>
+        <Grid.Column>{this.props.game.score}</Grid.Column>
+      </React.Fragment>
     );
   }
 }

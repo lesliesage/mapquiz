@@ -34,8 +34,12 @@ class App extends React.Component {
           <React.Fragment>
             <NavBar handleLoginClick={this.handleLoginClick} user={this.state.user}/>
             <Route exact path="/" render={(props) => <Splash {...props} closeForm={this.handleLoginClick} setUser={this.setUser} toggleForm={this.handleLoginClick} hid={this.state.open}/>} />
-            <Route exact path="/play" component={QuizContainer} />
-            <Route exact path="/stats" component={StatsContainer} />
+            <Route exact path="/play" render={
+              (props) => <QuizContainer {...props} user={this.state.user} />
+            } />
+            <Route exact path="/stats" render={
+              (props) => <StatsContainer {...props} user={this.state.user} />
+            } />
           </React.Fragment>
         </Router>
       </div>

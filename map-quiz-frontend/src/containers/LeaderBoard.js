@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Leader from "../components/Leader.js";
+import { Container, Grid, Header } from "semantic-ui-react";
 
 class LeaderBoard extends Component {
   state = {
@@ -14,12 +15,15 @@ class LeaderBoard extends Component {
 
   render() {
     return (
-      <div>
-        <p>LeaderBoard:</p>
-        {this.state.leaders.map(game => (
-          <Leader game={game} key={game.id} />
-        ))}
-      </div>
+      <Container className="stat-section">
+        <Grid divided="vertically">
+          <Grid.Row columns={3}>
+            {this.state.leaders.map((game, index) => (
+              <Leader game={game} key={game.id} index={index + 1} />
+            ))}
+          </Grid.Row>
+        </Grid>
+      </Container>
     );
   }
 }
