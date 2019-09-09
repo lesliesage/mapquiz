@@ -5,7 +5,9 @@ class Splash extends Component {
 
   render() {
     return <div>Splash Here
+      {this.props.hid ? console.log(true) : 
       <FormContainer />
+      }
     </div>;
   }
 }

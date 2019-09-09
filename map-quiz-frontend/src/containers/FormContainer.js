@@ -18,8 +18,8 @@ class FormContainer extends React.Component {
 
     render() {
         return(
-            <div className="ui equal width form">
-                <div className="fields">
+            <div className='ui form'>
+              
                     <div className="field">
                     <label>Username</label>
                     <input onChange={this.loginChange} type="text" name='username' placeholder="Username"></input>
@@ -28,7 +28,8 @@ class FormContainer extends React.Component {
                     <label>Password</label>
                     <input onChange={this.loginChange} name='password' type="password"></input>
                     </div>
-                </div>
+               
+                <div className='ui submit button'>Play</div>
             </div>
            
         )
