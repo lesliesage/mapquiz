@@ -20,9 +20,7 @@ class QuizContainer extends Component {
   }
 
   setChoice = (latlng) => {
-    debugger
     this.setState({yourChoice: latlng})
-    debugger
   }
 
   render() {

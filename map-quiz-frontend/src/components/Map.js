@@ -31,7 +31,6 @@ let i = 1;
 let handleClick = (e, props) => {
   props.toggleMarker()
   let latLng = e.latLng
-  debugger
   props.setChoice(latLng)
   console.log(e.latLng);
 }
