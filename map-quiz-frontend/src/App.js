@@ -8,7 +8,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends React.Component {
   state = {
-    hidden: true
+    hidden: true,
+    user: null
   };
 
   handleLoginClick = () => {
@@ -25,9 +26,15 @@ class App extends React.Component {
         <Router>
           <React.Fragment>
             <NavBar handleLoginClick={this.handleLoginClick} />
-            <Route exact path="/" render={(props) => <Splash {...props} hid={this.state.hidden}/>} />
-            <Route exact path="/play" component={QuizContainer} />
-            <Route exact path="/stats" component={StatsContainer} />
+            <Route exact path="/" render={(props) => 
+              <Splash {...props} hid={this.state.hidden} user={this.state.user} />} 
+            />
+            <Route exact path="/play" render={
+              (props) => <QuizContainer {...props} user={this.state.user} />
+            } />
+            <Route exact path="/stats" render={
+              (props) => <StatsContainer {...props} user={this.state.user} />
+            } />
           </React.Fragment>
         </Router>
       </div>

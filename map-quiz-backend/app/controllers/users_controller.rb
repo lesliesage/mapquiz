@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
 
     def show 
-        user = User.find(params[:id])
+        user = User.where('lower(username) = ?', params[:username])
         render json: user.to_json(user_serializer)
     end
 
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
+        byebug
         params.require(:user).permit(:username, :password)
     end
 

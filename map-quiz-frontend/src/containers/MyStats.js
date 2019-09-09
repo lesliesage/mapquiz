@@ -7,7 +7,9 @@ class MyStats extends Component {
     return (
       <div>
         MyStats Container Here
-        <Game />
+        {this.props.games.map(game => {
+          return <Game game={game} />
+        })}
       </div>
     );
   }
