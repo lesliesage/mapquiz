@@ -19,7 +19,16 @@ class FormContainer extends React.Component {
     }
 
     handleSubmitFindUser = () => {
-        fetch(`http://localhost:3000/users/${this.state.username}`).then(resp => resp.json()).then(user => {this.props.setUser(user)})
+        fetch(`http://localhost:3000/users/${this.state.username}`).then(resp => resp.json()).then(user => 
+        {if (user) {
+            this.props.setUser(user);
+             this.props.closeForm()
+            } else {
+                alert('incorrect username or password')
+            }
+            
+        })
+        
     }
 
     render() {
