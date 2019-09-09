@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.videoTag {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  }
