@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import NavBar from "./components/NavBar.js";
 import Splash from "./containers/Splash.js";
-import Login from "./components/Login.js";
 import QuizContainer from "./containers/QuizContainer.js";
 import StatsContainer from "./containers/StatsContainer.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
