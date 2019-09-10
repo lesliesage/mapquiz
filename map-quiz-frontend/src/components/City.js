@@ -1,19 +1,27 @@
 import React, { Component } from "react";
-import { Button, Container } from "semantic-ui-react";
+import { Button, Grid } from "semantic-ui-react";
 
 const City = props => {
   return (
-    <Container id="city">
-      {props.currentCity ? (
-        <h4>
-          Question {props.cityIndex + 1} of 20: Where is{" "}
-          {props.currentCity.name}?
-        </h4>
-      ) : null}
-      {props.nextButton ? (
-        <Button onClick={props.nextQuest}>Next Q</Button>
-      ) : null}
-    </Container>
+    <Grid id="city">
+      <Grid.Row columns={3}>
+        <Grid.Column textAlign="right">
+          {props.currentCity ? (
+            <h2>Question {props.cityIndex + 1} of 20:</h2>
+          ) : null}
+        </Grid.Column>
+        <Grid.Column textAlign="left">
+          {props.currentCity ? (
+            <h2>Where is {props.currentCity.name}?</h2>
+          ) : null}
+        </Grid.Column>
+        <Grid.Column textAlign="left">
+          {props.nextButton ? (
+            <Button onClick={props.nextQuest}>Next Q</Button>
+          ) : null}
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 };
 

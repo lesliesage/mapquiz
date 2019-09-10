@@ -6,7 +6,7 @@ class MyStats extends Component {
   state = {};
   render() {
     return (
-      <Container className="stat-section">
+      <Container id="my-stats-section">
         {this.props.games.map(game => {
           return (
             <Game
