@@ -29,7 +29,7 @@ class StatsContainer extends Component {
 
   render() {
     return (
-      <Grid divided="vertically" id="leader-grid">
+      <Grid id="leader-grid">
         <Grid.Row columns={1}>
           <Header as="h1" textAlign="center">
             <Header.Content>Leaderboard</Header.Content>

@@ -1,18 +1,26 @@
 import React from "react";
 import { Button, Header, Icon, Modal } from "semantic-ui-react";
+import { Redirect } from "react-router-dom";
 
 class FormContainer extends React.Component {
   constructor() {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      redirect: false
     };
   }
 
   loginChange = e => {
     this.setState({
       [e.target.name]: e.target.value
+    });
+  };
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
     });
   };
 
@@ -23,6 +31,7 @@ class FormContainer extends React.Component {
         if (user) {
           this.props.setUser(user);
           this.props.closeForm();
+          this.setRedirect();
         } else {
           alert("incorrect username or password");
         }
@@ -31,7 +40,9 @@ class FormContainer extends React.Component {
 
   render() {
     return (
-      <Modal id="login-modal"
+      this.state.redirect ? <Redirect to="/play" /> :
+      <Modal
+        id="login-modal"
         open={this.props.hid}
         centered={false}
         onClose={this.props.toggleform}
@@ -85,7 +96,8 @@ class RegisterModal extends React.Component {
   render() {
     const { open } = this.state;
     return (
-      <Modal id="register-modal"
+      <Modal
+        id="register-modal"
         open={open}
         onOpen={this.open}
         onClose={this.close}

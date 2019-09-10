@@ -9,23 +9,27 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 class App extends React.Component {
   state = {
     open: false,
-    user: null
+    user: null,
+    page: "/",
   };
 
+  setPage = (page) => {
+    this.setState({page: page})
+  }
 
-  setUser = (user) => {
+  setUser = user => {
     this.setState({
       user: user
-    })
-  }
+    });
+  };
 
   handleLoginClick = () => {
     this.setState({ open: !this.state.open });
   };
 
   handleLogoutClick = () => {
-    this.setState({user: null})
-  }
+    this.setState({ user: null });
+  };
 
   render() {
     return (
@@ -36,14 +40,39 @@ class App extends React.Component {
         />
         <Router>
           <React.Fragment>
-            <NavBar handleLogoutClick={this.handleLogoutClick} handleLoginClick={this.handleLoginClick} user={this.state.user}/>
-            <Route exact path="/" render={(props) => <Splash {...props} closeForm={this.handleLoginClick} setUser={this.setUser} toggleForm={this.handleLoginClick} hid={this.state.open}/>} />
-            <Route exact path="/play" render={
-              (props) => <QuizContainer {...props} user={this.state.user} />
-            } />
-            <Route exact path="/stats" render={
-              (props) => <StatsContainer {...props} user={this.state.user} />
-            } />
+            <NavBar
+              handleLogoutClick={this.handleLogoutClick}
+              handleLoginClick={this.handleLoginClick}
+              user={this.state.user}
+              page={this.state.page}
+            />
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <Splash
+                  {...props}
+                  closeForm={this.handleLoginClick}
+                  setUser={this.setUser}
+                  toggleForm={this.handleLoginClick}
+                  hid={this.state.open}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/play"
+              render={props => (
+                <QuizContainer {...props} user={this.state.user} />
+              )}
+            />
+            <Route
+              exact
+              path="/stats"
+              render={props => (
+                <StatsContainer {...props} user={this.state.user} />
+              )}
+            />
           </React.Fragment>
         </Router>
       </div>

@@ -33,25 +33,45 @@
 }
 
 #leader-grid {
-  margin: 2rem;
+  margin: 0rem;
 }
 
-h4 {
-  margin-top: 5rem !important;
+#leader-grid {
+  margin: 0rem;
 }
 
 .stat-section {
-  border-color: black;
+  margin: 0 auto;
+  width: 30%;
+  padding-bottom: 30px;
+}
+
+.stat-section div.column {
+  margin-top: 1px !important;
+  margin-bottom: 1px !important;
+  font-size: 18px !important;
+}
+
+#my-stats-section {
   margin: 0 auto;
   width: 30%;
 }
 
-.game-button {
-  margin-bottom: 20px;
+#deets {
+  margin: 0 auto;
+}
+
+#deets.div {
+  margin: 0 auto;
+}
+
+.button.ui.button.game-button {
+  margin: 10px !important;
+  width: 300px;
 }
 
 #logo {
- height: 50px;
+  height: 50px;
 }
 
 #login-modal {
@@ -68,6 +88,7 @@ h4 {
   left: 20% !important;
 }
 
+<<<<<<< HEAD
 #dead-modal{
   top: 30%
 }
@@ -87,9 +108,16 @@ h4 {
   box-shadow: 0;
   border-radius: 0rem;
 } */
+=======
+#navbar {
+  height: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+>>>>>>> 7db0924292cf814d7eb4b91317d8adaecf23f2ed
 
 #mapquiz-link {
-  border-color: #fff;
+  border-color: #4a9fda;
   background-color: transparent;
   box-shadow: none;
   font-weight: 700;
@@ -106,53 +134,30 @@ h4 {
   -webkit-box-align: center;
   align-items: center;
   box-sizing: inherit;
-  -webkit-box-direction: inherit; 
+  -webkit-box-direction: inherit;
   float: left;
 }
 
 #mapquiz-text {
-  font-size: 2.5rem
+  font-size: 2.5rem;
 }
 
-.nav-link{
+.nav-link {
   font-size: 1.5rem !important;
   margin-top: 2rem !important;
-  float: right 
+  float: right;
 }
 
-#play-link{
+#play-link {
   background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
-#logout-button{
+#logout-button {
   background-color: rgba(255, 255, 255, 0.15) !important;
 }
-
-
-
- /* #nav-link {
-  border-color: #fff;
-  background-color: transparent;
-  box-shadow: none;
-  font-weight: 700;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff !important;
-  border-bottom-style: solid;
-  border-radius: 0;
-  align-self: flex-end;
-  margin: 0 0 -2px;
-  padding: 0.85714286em 1.14285714em;
-  border-bottom-width: 2px;
-  transition: color 0.1s ease;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  box-sizing: inherit;
-  -webkit-box-direction: inherit;
-} */
 
 #stats-link {
-  border-color: #fff;
+  border-color: #4a9fda;
   background-color: transparent;
   box-shadow: none;
   font-weight: 700;
@@ -170,7 +175,7 @@ h4 {
   -webkit-box-direction: inherit;
 }
 
- #login-button {
+#login-button {
   color: #009fda;
   margin-left: 0.5em;
   position: relative;
@@ -179,27 +184,14 @@ h4 {
   padding-bottom: 0.78571429em;
   padding-top: 0.78571429em;
   font-size: 1em;
-  box-shadow: 0 0 0 2px #fff inset !important;
+  box-shadow: 0 0 0 2px #009fda inset !important;
   background-color: rgba(255, 255, 255, 0.15) !important;
-  /* color: #fff; */
-  text-shadow: none !important;
-  cursor: pointer;
-  display: inline-block;
-  min-height: 1em;
-  outline: 0;
-  border: none;
-  vertical-align: baseline;
-  padding: 0.78571429em 1.5em 0.78571429em;
-  text-transform: none;
-  font-weight: 700;
-  line-height: 1em;
-  font-style: normal;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 0.28571429rem; 
- } 
+}
 
- 
+#city {
+  height: 59px;
+}
+
 .progress {
   background-color: #f5f5f5;
   border-radius: 3px;
@@ -244,10 +236,6 @@ h4 {
   -webkit-transition: width 0.6s ease;
   -o-transition: width 0.6s ease;
   transition: width 0.6s ease;
-}
-
-#city {
-  padding-top: 20px;
 }
 
 #game-grid {
