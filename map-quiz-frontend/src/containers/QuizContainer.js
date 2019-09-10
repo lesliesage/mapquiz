@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { Grid } from "semantic-ui-react";
 import City from "../components/City.js";
 import Map from "../components/Map.js";
 import Score from "../components/Score.js";
 import APIKEY from "../APIKEY.js";
+
 class QuizContainer extends Component {
   state = {
     cities: [],
@@ -13,17 +15,19 @@ class QuizContainer extends Component {
     nextButton: false
   };
 
-  componentDidMount(){
-    fetch('http://localhost:3000/randomtwenty').then(resp => resp.json()).then(cities => this.setState({cities: cities}))
+  componentDidMount() {
+    fetch("http://localhost:3000/randomtwenty")
+      .then(resp => resp.json())
+      .then(cities => this.setState({ cities: cities }));
   }
 
   toggleMarker = () => {
-    this.setState({isMarkerShown: !this.state.isMarkerShown})
-  }
+    this.setState({ isMarkerShown: !this.state.isMarkerShown });
+  };
 
-  setChoice = (latlng) => {
-    this.setState({yourChoice: latlng})
-  }
+  setChoice = latlng => {
+    this.setState({ yourChoice: latlng });
+  };
 
   nextQuest = () => {
     
@@ -54,6 +58,9 @@ class QuizContainer extends Component {
       <div>
         QuizContainer Here
         <City currentCity={this.state.cities[this.state.cityIndex]} nextButton={this.state.nextButton} nextQuest={this.nextQuest}/>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={13}>
         <Map
         toggleNextButton={this.toggleNextButton}
         setScore={this.setScore}
@@ -67,8 +74,14 @@ class QuizContainer extends Component {
         containerElement={<div style={{ height: `800px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
-        <Score />
+         </Grid.Column>
+            <Grid.Column width={1}>
+              <Score />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
+
     );
   }
 }
