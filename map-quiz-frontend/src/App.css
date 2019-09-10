@@ -45,3 +45,15 @@
 .game-button {
   margin-bottom: 20px;
 }
+
+#login-modal {
+  margin: 0 auto;
+  top: 10% !important;
+  left: 10% !important;
+}
+
+#register-modal {
+  margin: 0 auto;
+  top: 10% !important;
+  left: 20% !important;
+}
