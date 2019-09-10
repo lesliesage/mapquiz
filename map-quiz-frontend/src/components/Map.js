@@ -31,16 +31,16 @@ let handleClick = (e, props) => {
   let latLng = e.latLng
   props.setChoice(latLng)
   let mylatlng = new window.google.maps.LatLng({lat: props.currentCity.lat, lng: props.currentCity.long})
-  let distance = window.google.maps.geometry.spherical.computeDistanceBetween(latLng, mylatlng)/1000
+  let distance = window.google.maps.geometry.spherical.computeDistanceBetween(latLng, mylatlng)/10000
   console.log(distance)
   if (props.currentScore - distance >= 0) {
     props.setScore(distance)
     props.toggleNextButton()
     let formattedQuestion = {distance: distance, city_id: props.currentCity.id}
     props.addQuestion(formattedQuestion)
-    debugger
+   
     if(props.cityIndex >= 19){
-      debugger
+      
       props.createGame()
       props.showScoreModal()
     }
