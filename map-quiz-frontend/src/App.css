@@ -68,6 +68,16 @@ h4 {
   left: 20% !important;
 }
 
+#dead-modal{
+  top: 30%
+}
+
+#score-modal{
+  top: 30%
+}
+
+
+
 /* #navbar {
   background: #f7f7f7;
   border: 0 solid transparent;

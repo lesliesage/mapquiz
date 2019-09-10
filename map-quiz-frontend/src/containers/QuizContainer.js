@@ -4,6 +4,8 @@ import City from "../components/City.js";
 import Map from "../components/Map.js";
 import Score from "../components/Score.js";
 import APIKEY from "../APIKEY.js";
+import DeadModal from '../components/DeadModal'
+import ScoreModal from '../components/ScoreModal'
 
 class QuizContainer extends Component {
   state = {
@@ -11,10 +13,77 @@ class QuizContainer extends Component {
     cityIndex: 0,
     isMarkerShown: false,
     yourChoice: null,
-    score: 2000,
-    previousScore: 2000,
-    nextButton: false
+    score: 3000,
+    previousScore: 3000,
+    nextButton: false,
+    questions: [],
+    deadModal: false,
+    scoreModal: false
   };
+
+  createGame = () => {
+    debugger
+   let dataObj = {game: {user_id: 13, score: this.state.score, questions_attributes: [...this.state.questions]}}
+   let configObj = {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(dataObj)
+    }
+
+    debugger
+
+    fetch('http://localhost:3000/games', configObj).then(resp => resp.json()).then(data => console.log(data))
+  }
+
+  showScoreModal = () => {
+    this.setState({
+      scoreModal: true
+    })
+  }
+
+  closeScoreModal = () => {
+    this.setState({
+      scoreModal: false
+    })
+  }
+
+    showModal = () => {
+      this.setState({
+          deadModal: true
+      })
+  }
+
+  closeModal = () => {
+    this.setState({
+        deadModal: false
+    })
+  }
+
+  resetPlay = () => {
+    fetch("http://localhost:3000/randomtwenty")
+      .then(resp => resp.json())
+      .then(cities => this.setState({ cities: cities }));
+
+    this.setState({
+      cityIndex: 0,
+      isMarkerShown: false,
+      yourChoice: null,
+      score: 3000,
+      previousScore: 3000,
+      nextButton: false,
+      questions: [],
+      deadModal: false,
+      scoreModal: false
+    })
+  }
+
+  addQuestion = (question) => {
+    this.setState({
+      questions: [...this.state.questions, question]
+    })
+  }
 
   componentDidMount() {
     fetch("http://localhost:3000/randomtwenty")
@@ -55,6 +124,8 @@ class QuizContainer extends Component {
   render() {
     return (
       <div>
+        <DeadModal show={this.state.deadModal} closeModal={this.closeModal} resetPlay={this.resetPlay}/>
+        <ScoreModal show={this.state.scoreModal} resetPlay={this.resetPlay} score={this.state.score}/>
         <City
           currentCity={this.state.cities[this.state.cityIndex]}
           cityIndex={this.state.cityIndex}
@@ -65,6 +136,12 @@ class QuizContainer extends Component {
           <Grid.Row>
             <Grid.Column width={13}>
               <Map
+                showScoreModal={this.showScoreModal}
+                cityIndex={this.state.cityIndex}
+                createGame={this.createGame}
+                showModal={this.showModal}
+                currentScore={this.state.score}
+                addQuestion={this.addQuestion}
                 toggleNextButton={this.toggleNextButton}
                 setScore={this.setScore}
                 currentCity={this.state.cities[this.state.cityIndex]}
