@@ -48,8 +48,10 @@
 
 #login-modal {
   margin: 0 auto;
-  top: 10% !important;
-  left: 10% !important;
+  top: 30% !important;
+  left: 20% !important;
+  right: 20% !important;
+  overflow: hidden !important;
 }
 
 #register-modal {

@@ -32,7 +32,12 @@ let handleClick = (e, props) => {
   props.toggleMarker()
   let latLng = e.latLng
   props.setChoice(latLng)
-  console.log(e.latLng);
+  let mylatlng = new window.google.maps.LatLng({lat: props.currentCity.lat, lng: props.currentCity.long})
+  let distance = window.google.maps.geometry.spherical.computeDistanceBetween(latLng, mylatlng)/1000
+  console.log(distance)
+  props.setScore(distance)
+  props.toggleNextButton()
+  debugger
 }
 
 let formatlatlng = (currentCity) => {

@@ -8,7 +8,9 @@ class QuizContainer extends Component {
     cities: [],
     cityIndex: 0,
     isMarkerShown: false,
-    yourChoice: null
+    yourChoice: null,
+    score: 2000,
+    nextButton: false
   };
 
   componentDidMount(){
@@ -23,12 +25,38 @@ class QuizContainer extends Component {
     this.setState({yourChoice: latlng})
   }
 
+  nextQuest = () => {
+    
+    this.setState({
+      cityIndex: this.state.cityIndex += 1,
+      nextButton: !this.state.nextButton,
+      isMarkerShown: false,
+      yourChoice: null
+
+    })
+  }
+
+  toggleNextButton = () => {
+   
+    this.setState({
+      nextButton: !this.state.nextButton
+    })
+  }
+
+  setScore = (distance) => {
+    this.setState({
+      score: this.state.score -= distance
+    })
+  }
+
   render() {
     return (
       <div>
         QuizContainer Here
-        <City currentCity={this.state.cities[this.state.cityIndex]}/>
+        <City currentCity={this.state.cities[this.state.cityIndex]} nextButton={this.state.nextButton} nextQuest={this.nextQuest}/>
         <Map
+        toggleNextButton={this.toggleNextButton}
+        setScore={this.setScore}
         currentCity={this.state.cities[this.state.cityIndex]}
         yourChoice={this.state.yourChoice}
         setChoice={this.setChoice}
