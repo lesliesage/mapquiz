@@ -45,6 +45,9 @@ class StatsContainer extends Component {
             <Header.Content>My Stats</Header.Content>
           </Header>
           <Grid.Column>
+            <Header as="h3" textAlign="center">
+              <Header.Content>Games</Header.Content>
+            </Header>
             <MyStats
               games={this.state.games}
               handleClick={this.setGameForDeets}
@@ -52,6 +55,9 @@ class StatsContainer extends Component {
           </Grid.Column>
 
           <Grid.Column>
+            <Header as="h3" textAlign="center">
+              <Header.Content>Questions</Header.Content>
+            </Header>
             <Deets game={this.state.gameForDeets} />
           </Grid.Column>
         </Grid.Row>
