@@ -46,6 +46,10 @@
   margin-bottom: 20px;
 }
 
+#logo {
+ height: 50px;
+}
+
 #login-modal {
   margin: 0 auto;
   top: 30% !important;
@@ -59,3 +63,126 @@
   top: 10% !important;
   left: 20% !important;
 }
+
+/* #navbar {
+  background: #f7f7f7;
+  border: 0 solid transparent;
+  margin: 1rem 0;
+  font-size: 0;
+  font-weight: 400;
+  box-shadow: 0;
+  border-radius: 0rem;
+} */
+
+#mapquiz-link {
+  border-color: #fff;
+  background-color: transparent;
+  box-shadow: none;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff !important;
+  border-bottom-style: solid;
+  border-radius: 0;
+  align-self: flex-end;
+  margin: 0 0 -2px;
+  padding: 0.85714286em 1.14285714em;
+  border-bottom-width: 2px;
+  transition: color 0.1s ease;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: inherit;
+  -webkit-box-direction: inherit; 
+  float: left;
+}
+
+#mapquiz-text {
+  font-size: 2.5rem
+}
+
+.nav-link{
+  font-size: 1.5rem !important;
+  margin-top: 2rem !important;
+  float: right 
+}
+
+#play-link{
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+#logout-button{
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+
+
+ /* #nav-link {
+  border-color: #fff;
+  background-color: transparent;
+  box-shadow: none;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff !important;
+  border-bottom-style: solid;
+  border-radius: 0;
+  align-self: flex-end;
+  margin: 0 0 -2px;
+  padding: 0.85714286em 1.14285714em;
+  border-bottom-width: 2px;
+  transition: color 0.1s ease;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: inherit;
+  -webkit-box-direction: inherit;
+} */
+
+#stats-link {
+  border-color: #fff;
+  background-color: transparent;
+  box-shadow: none;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff !important;
+  border-bottom-style: solid;
+  border-radius: 0;
+  align-self: flex-end;
+  border-bottom-width: 2px;
+  transition: color 0.1s ease;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: inherit;
+  -webkit-box-direction: inherit;
+}
+
+ #login-button {
+  color: #009fda;
+  margin-left: 0.5em;
+  position: relative;
+  top: 0;
+  margin: -0.5em 0;
+  padding-bottom: 0.78571429em;
+  padding-top: 0.78571429em;
+  font-size: 1em;
+  box-shadow: 0 0 0 2px #fff inset !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  /* color: #fff; */
+  text-shadow: none !important;
+  cursor: pointer;
+  display: inline-block;
+  min-height: 1em;
+  outline: 0;
+  border: none;
+  vertical-align: baseline;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  text-transform: none;
+  font-weight: 700;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.28571429rem; 
+ } 
+
+ 

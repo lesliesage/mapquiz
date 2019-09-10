@@ -56,7 +56,7 @@ class QuizContainer extends Component {
   render() {
     return (
       <div>
-        QuizContainer Here
+        
         <City currentCity={this.state.cities[this.state.cityIndex]} nextButton={this.state.nextButton} nextQuest={this.nextQuest}/>
         <Grid>
           <Grid.Row>

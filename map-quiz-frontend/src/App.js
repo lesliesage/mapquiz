@@ -23,6 +23,10 @@ class App extends React.Component {
     this.setState({ open: !this.state.open });
   };
 
+  handleLogoutClick = () => {
+    this.setState({user: null})
+  }
+
   render() {
     return (
       <div className="App">
@@ -32,7 +36,7 @@ class App extends React.Component {
         />
         <Router>
           <React.Fragment>
-            <NavBar handleLoginClick={this.handleLoginClick} user={this.state.user}/>
+            <NavBar handleLogoutClick={this.handleLogoutClick} handleLoginClick={this.handleLoginClick} user={this.state.user}/>
             <Route exact path="/" render={(props) => <Splash {...props} closeForm={this.handleLoginClick} setUser={this.setUser} toggleForm={this.handleLoginClick} hid={this.state.open}/>} />
             <Route exact path="/play" render={
               (props) => <QuizContainer {...props} user={this.state.user} />

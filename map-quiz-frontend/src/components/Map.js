@@ -7,7 +7,7 @@ import {
 } from "react-google-maps";
 import MapOptions from "../MapOptions.json";
 
-const google = window.google;
+
 // reminders for resources we can use to calculate distance between the click and city coordinates
 let arr = [
   { lat: 48.8667, lng: 2.3333 },
@@ -23,9 +23,7 @@ let arr = [
 //     map: this.googleMap
 //   });
 
-let markP = arr[0];
 
-let i = 1;
 
 // {myLatLng = new google.maps.LatLng({lat: -34, lng: 151})}
 let handleClick = (e, props) => {
