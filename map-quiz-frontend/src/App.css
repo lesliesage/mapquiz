@@ -68,7 +68,7 @@
 
 .progress.vertical {
   position: relative;
-  width: 100%;
+  width: 80px;
   height: 600px;
   display: inline-block;
   margin-right: 10px;
@@ -85,14 +85,14 @@
 }
 
 .progress.vertical > .progress-bar {
-  width: 100% !important;
+  width: 80px;
   position: absolute;
   bottom: 0;
 }
 
 .progress-bar {
   float: left;
-  width: 0;
+  width: 80px;
   height: 100%;
   font-size: 18px;
   line-height: 40px;
