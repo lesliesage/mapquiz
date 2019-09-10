@@ -1,12 +1,28 @@
 import React, { Component } from "react";
+import { Spring } from "react-spring/renderprops";
 import { Container, Header } from "semantic-ui-react";
 
 class Score extends Component {
-  state = {};
+  state = {
+    percentage: 70
+  };
+
   render() {
     return (
       <Container id="score">
-        <Header>Score:</Header>
+        <Header>Score</Header>
+        <Spring from={{ percent: 0 }} to={{ percent: this.state.percentage }}>
+          {({ percent }) => (
+            <div className="progress vertical">
+              <div
+                style={{ height: `${this.state.percentage}%` }}
+                className="progress-bar"
+              >
+                <span className="sr-only">{`${this.props.score}`}</span>
+              </div>
+            </div>
+          )}
+        </Spring>
       </Container>
     );
   }
