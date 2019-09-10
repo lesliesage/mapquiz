@@ -88,7 +88,6 @@
   left: 20% !important;
 }
 
-<<<<<<< HEAD
 #dead-modal{
   top: 30%
 }
@@ -108,13 +107,11 @@
   box-shadow: 0;
   border-radius: 0rem;
 } */
-=======
 #navbar {
   height: 100px;
   padding-left: 10px;
   padding-right: 10px;
 }
->>>>>>> 7db0924292cf814d7eb4b91317d8adaecf23f2ed
 
 #mapquiz-link {
   border-color: #4a9fda;
