@@ -33,8 +33,20 @@ let handleClick = (e, props) => {
   let mylatlng = new window.google.maps.LatLng({lat: props.currentCity.lat, lng: props.currentCity.long})
   let distance = window.google.maps.geometry.spherical.computeDistanceBetween(latLng, mylatlng)/1000
   console.log(distance)
-  props.setScore(distance)
-  props.toggleNextButton()
+  if (props.currentScore - distance >= 0) {
+    props.setScore(distance)
+    props.toggleNextButton()
+    let formattedQuestion = {distance: distance, city_id: props.currentCity.id}
+    props.addQuestion(formattedQuestion)
+    debugger
+    if(props.cityIndex >= 19){
+      debugger
+      props.createGame()
+      props.showScoreModal()
+    }
+  } else {
+    props.showModal()
+  }
 }
 
 let formatlatlng = (currentCity) => {
@@ -57,8 +69,8 @@ const Map = withScriptjs(
         }}
         onClick={(e) => handleClick(e, props)}
       >
-        {props.isMarkerShown && props.currentCity ? <Marker position={formatlatlng(props.currentCity)}/> : null}
-        {props.yourChoice ? <Marker position={ props.yourChoice }/> : null}
+        {props.isMarkerShown && props.currentCity ? <Marker icon={{                               url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"                           }} position={formatlatlng(props.currentCity)}/> : null}
+        {props.yourChoice ? <Marker icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}}position={ props.yourChoice }/> : null}
       </GoogleMap>
     </React.Fragment>
   ))

@@ -88,6 +88,25 @@
   left: 20% !important;
 }
 
+#dead-modal{
+  top: 30%
+}
+
+#score-modal{
+  top: 30%
+}
+
+
+
+/* #navbar {
+  background: #f7f7f7;
+  border: 0 solid transparent;
+  margin: 1rem 0;
+  font-size: 0;
+  font-weight: 400;
+  box-shadow: 0;
+  border-radius: 0rem;
+} */
 #navbar {
   height: 100px;
   padding-left: 10px;
