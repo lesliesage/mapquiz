@@ -32,18 +32,14 @@
   }
 }
 
-#leader-grid {
-  margin: 0rem;
-}
-
-#leader-grid {
-  margin: 0rem;
+#leader-grid div.column {
+  margin-top: 10px;
 }
 
 .stat-section {
   margin: 0 auto;
   width: 30%;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .stat-section div.column {
@@ -52,16 +48,20 @@
   font-size: 18px !important;
 }
 
+#deets div.column {
+  margin: 0px;
+}
+
 #my-stats-section {
   margin: 0 auto;
   width: 30%;
 }
 
-#deets {
-  margin: 0 auto;
+#deets div.two.column.row {
+  padding: 2px !important;
 }
 
-#deets.div {
+#deets {
   margin: 0 auto;
 }
 
