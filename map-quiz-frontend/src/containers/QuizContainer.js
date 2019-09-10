@@ -12,6 +12,7 @@ class QuizContainer extends Component {
     isMarkerShown: false,
     yourChoice: null,
     score: 2000,
+    previousScore: 2000,
     nextButton: false
   };
 
@@ -31,7 +32,7 @@ class QuizContainer extends Component {
 
   nextQuest = () => {
     this.setState({
-      cityIndex: (this.state.cityIndex += 1),
+      cityIndex: this.state.cityIndex + 1,
       nextButton: !this.state.nextButton,
       isMarkerShown: false,
       yourChoice: null
@@ -45,9 +46,10 @@ class QuizContainer extends Component {
   };
 
   setScore = distance => {
-    this.setState({
-      score: (this.state.score -= distance)
-    });
+    this.setState(state => ({
+      score: state.score - distance,
+      previousScore: state.score
+    }));
   };
 
   render() {
@@ -77,7 +79,10 @@ class QuizContainer extends Component {
               />
             </Grid.Column>
             <Grid.Column width={1}>
-              <Score score={this.state.score} />
+              <Score
+                score={this.state.score}
+                previousScore={this.state.previousScore}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
