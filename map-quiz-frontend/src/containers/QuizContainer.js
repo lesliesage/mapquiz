@@ -23,7 +23,7 @@ class QuizContainer extends Component {
 
   createGame = () => {
     debugger
-   let dataObj = {game: {user_id: 13, score: this.state.score, questions_attributes: [...this.state.questions]}}
+   let dataObj = {game: {user_id: this.props.user.id, score: this.state.score, questions_attributes: [...this.state.questions]}}
    let configObj = {
       method: 'POST',
       headers: {

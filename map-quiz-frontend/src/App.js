@@ -5,6 +5,7 @@ import Splash from "./containers/Splash.js";
 import QuizContainer from "./containers/QuizContainer.js";
 import StatsContainer from "./containers/StatsContainer.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch, Redirect, withRouter } from 'react-router-dom'
 
 class App extends React.Component {
   state = {
@@ -62,9 +63,8 @@ class App extends React.Component {
             <Route
               exact
               path="/play"
-              render={props => (
-                <QuizContainer {...props} user={this.state.user} />
-              )}
+              render={props => this.state.user ? <QuizContainer {...props} user={this.state.user} /> : <Redirect to='/' />
+              }
             />
             <Route
               exact
