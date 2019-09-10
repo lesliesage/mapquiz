@@ -35,7 +35,6 @@ let handleClick = (e, props) => {
   console.log(distance)
   props.setScore(distance)
   props.toggleNextButton()
-  debugger
 }
 
 let formatlatlng = (currentCity) => {
