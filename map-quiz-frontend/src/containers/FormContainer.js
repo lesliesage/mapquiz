@@ -26,11 +26,14 @@ class FormContainer extends React.Component {
   };
 
   handleSubmitFindUser = () => {
-    fetch(`http://localhost:3000/users/${this.state.username}`)
+    let obj = {headers: {"Authentication": this.state.password}}
+    fetch(`http://localhost:3000/users/${this.state.username}`, obj)
       .then(resp => resp.json())
-      .then(user => {
-        if (user) {
-          this.props.setUser(user);
+      .then(data => {
+        console.log(data)
+        if (data.authenticated) {
+          localStorage.setItem("token", data.token)
+          this.props.setUser(data.user);
           this.props.closeForm();
           this.setRedirect();
         } else {

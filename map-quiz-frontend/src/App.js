@@ -30,7 +30,15 @@ class App extends React.Component {
 
   handleLogoutClick = () => {
     this.setState({ user: null });
+    localStorage.removeItem("token")
   };
+
+  componentDidMount() {
+    if(localStorage.getItem('token')) {
+      fetch('http://localhost:3000/token', {headers: {"Authentication": `${localStorage.getItem("token")}`}}).then(resp => resp.json()).then(user => this.setUser(user))
+
+    }
+  }
 
   render() {
     return (

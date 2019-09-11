@@ -3,6 +3,8 @@ import Game from "../components/Game.js";
 import { Container } from "semantic-ui-react";
 
 class MyStats extends Component {
+ 
+
   sorted = () => {
     return this.props.games.sort((a, b) => (a.score < b.score ? 1 : -1));
   };

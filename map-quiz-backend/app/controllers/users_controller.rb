@@ -1,6 +1,7 @@
+require 'jwt'
 class UsersController < ApplicationController
-    skip_before_action :verify_authenticity_token
     
+
     def index
         users = User.all 
         render json: users.to_json(user_serializer)
@@ -8,12 +9,35 @@ class UsersController < ApplicationController
 
     def show 
         user = User.find_by(username: params[:username])
-        render json: user.to_json(user_serializer)
+        if user && user.authenticate(request.headers["Authentication"])
+            token = encode({user_id: user.id})
+        render json: {
+            authenticated: true,
+            message: "You are logging in...",
+            user: user,
+            token: token
+          }, status: :accepted
+        else
+            render json: {authenticated: false}
+        end
+    end
+
+
+    def token
+        token = request.headers["Authentication"]
+        user = User.find(decode(token)["user_id"])
+        render json: user.to_json(user_serializer), status: :accepted
     end
 
     def create
         user = User.create(user_params)
-        render json: user.to_json(user_serializer)
+        token = encode(user_id: user.id)
+        render json: {
+            authenticated: true,
+            message: "You are logging in...",
+            user: user.to_json(user_serializer),
+            token: token
+          }, status: :accepted
     end
 
     private

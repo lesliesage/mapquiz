@@ -12,8 +12,9 @@ class StatsContainer extends Component {
   };
 
   componentDidMount() {
-    if (this.props.user) {
-      fetch(`http://localhost:3000/users/${this.props.user.username}`)
+    
+    if (localStorage.getItem("token")) {
+      fetch(`http://localhost:3000/token`, {headers: {"Authentication": `${localStorage.getItem("token")}`}})
         .then(resp => resp.json())
         .then(data => {console.log(data); this.setState({ games: data.games })});
     } else return null;
@@ -28,6 +29,7 @@ class StatsContainer extends Component {
   };
 
   render() {
+    console.log(this.state.games)
     return (
       <React.Fragment>
          <FormContainer
@@ -45,6 +47,7 @@ class StatsContainer extends Component {
             <LeaderBoard />
             {/* {this.props.user ? ( */}
           </Grid.Column>
+         
         </Grid.Row>
 
         <Grid.Row columns={2}>
