@@ -8,13 +8,13 @@ class Score extends Component {
       <Container id="score">
         <Header>Score</Header>
         <Spring
-          from={{ percent: this.props.previousScore / 20 }}
-          to={{ percent: this.props.score / 20 }}
+          from={{ percent: this.props.previousScore / 30 }}
+          to={{ percent: this.props.score / 30 }}
         >
-          {({ percent }) => (
+          {props  => (
             <div className="progress vertical">
               <div
-                style={{ height: `${this.props.score / 20}%` }}
+                style={{ height: `${props.percent}%` }}
                 className="progress-bar"
               >
                 <span className="sr-only">{`${Math.round(
