@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Leader from "../components/Leader.js";
-import { Container, Grid, Header } from "semantic-ui-react";
+import { Container, Grid } from "semantic-ui-react";
 
 class LeaderBoard extends Component {
   state = {

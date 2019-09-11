@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Header, Icon, Modal } from "semantic-ui-react";
+import { Button, Header, Modal } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
+import RegisterModal from "../components/RegisterModal.js";
 
 class FormContainer extends React.Component {
   constructor() {
@@ -38,9 +39,34 @@ class FormContainer extends React.Component {
       });
   };
 
+  handleSubmitNewUser = () => {
+    const newUserDataFromForm = {
+      username: this.state.username,
+      password: this.state.password
+    };
+    console.log(newUserDataFromForm);
+    const contentObj = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUserDataFromForm)
+    };
+    fetch(`http://localhost:3000/users`, contentObj)
+      .then(resp => resp.json())
+      .then(user => {
+        if (user) {
+          this.props.setUser(user);
+          this.props.closeForm();
+          this.setRedirect();
+        } else {
+          alert("passwords don't match");
+        }
+      });
+  };
+
   render() {
-    return (
-      this.state.redirect ? <Redirect to="/play" /> :
+    return this.state.redirect ? (
+      <Redirect to="/play" />
+    ) : (
       <Modal
         id="login-modal"
         open={this.props.hid}
@@ -80,67 +106,14 @@ class FormContainer extends React.Component {
           <Button color="red" onClick={this.props.toggleForm}>
             Close
           </Button>
-          <RegisterModal />
-        </Modal.Actions>
-      </Modal>
-    );
-  }
-}
-
-class RegisterModal extends React.Component {
-  state = { registerOpen: false };
-
-  open = () => this.setState({ open: true });
-  close = () => this.setState({ open: false });
-
-  render() {
-    const { open } = this.state;
-    return (
-      <Modal
-        id="register-modal"
-        open={open}
-        onOpen={this.open}
-        onClose={this.close}
-        centered={false}
-        size="small"
-        trigger={<Button>Register</Button>}
-      >
-        <Modal.Header>Register</Modal.Header>
-        <Modal.Content>
-          <div className="ui form">
-            <div className="field">
-              <label>Username</label>
-              <input
-                onChange={this.loginChange}
-                type="text"
-                name="username"
-                placeholder="Username"
-              ></input>
-            </div>
-
-            <div className="field">
-              <label>Password</label>
-              <input
-                onChange={this.loginChange}
-                name="password"
-                type="password"
-              ></input>
-            </div>
-
-            <div className="field">
-              <label>Confirm Password</label>
-              <input
-                onChange={this.loginChange}
-                name="confirm password"
-                type="password"
-              ></input>
-            </div>
-
-            <div className="ui submit button">Register</div>
-          </div>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button icon="check" content="Close" onClick={this.close} />
+          <RegisterModal
+            loginChange={this.loginChange}
+            setRedirect={this.setRedirect}
+            handleSubmitNewUser={this.handleSubmitNewUser}
+            username={this.state.username}
+            password={this.state.password}
+            redirect={this.state.redirect}
+          />
         </Modal.Actions>
       </Modal>
     );

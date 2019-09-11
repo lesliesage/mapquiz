@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Game from "../components/Game.js";
-import { Container, Header } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 
 class MyStats extends Component {
   sorted = () => {

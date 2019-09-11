@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Grid } from "semantic-ui-react";
 import City from "../components/City.js";
 import Map from "../components/Map.js";

@@ -8,11 +8,11 @@ import {
 import MapOptions from "../MapOptions.json";
 
 // reminders for resources we can use to calculate distance between the click and city coordinates
-let arr = [
-  { lat: 48.8667, lng: 2.3333 },
-  { lat: 55.7522, lng: 37.6155 },
-  { lat: -22.925, lng: -43.225 }
-];
+// let arr = [
+//   { lat: 48.8667, lng: 2.3333 },
+//   { lat: 55.7522, lng: 37.6155 },
+//   { lat: -22.925, lng: -43.225 }
+// ];
 
 // google.maps.geometry.spherical.computeDistanceBetween(LatLng1, myLatLng)
 
@@ -36,7 +36,7 @@ let handleClick = (e, props) => {
       latLng,
       mylatlng
     ) / 10000;
-  console.log(distance);
+  // console.log(distance);
   if (props.currentScore - distance >= 0) {
     props.setScore(distance);
     props.toggleNextButton();
@@ -62,7 +62,7 @@ let formatlatlng = currentCity => {
 const Map = withScriptjs(
   withGoogleMap(props => (
     <React.Fragment>
-      {console.log(props)}
+      {/* {console.log(props)} */}
       <GoogleMap
         defaultZoom={2.3}
         defaultCenter={{ lat: 25, lng: 0 }}

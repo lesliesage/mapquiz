@@ -5,7 +5,7 @@ import Splash from "./containers/Splash.js";
 import QuizContainer from "./containers/QuizContainer.js";
 import StatsContainer from "./containers/StatsContainer.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Switch, Redirect, withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class App extends React.Component {
   state = {
@@ -25,7 +25,6 @@ class App extends React.Component {
   };
 
   handleLoginClick = () => {
- 
     this.setState({ open: !this.state.open });
   };
 

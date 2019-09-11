@@ -1,13 +1,13 @@
-import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import React, { Component } from "react";
-import { Button, Menu } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 class NavBar extends Component {
   mapQuizButton = (
     <Button position={"left"} style={{ marginLeft: "0.5em" }} id="mapquiz-link">
       <NavLink id="mapquiz-text" exact to="/">
-        <img id="logo" src={require("../favicon.ico")}></img>MapQuiz
+        <img id="logo" src={require("../favicon.ico")} alt="MapQuiz Logo"></img>
+        MapQuiz
       </NavLink>
     </Button>
   );
