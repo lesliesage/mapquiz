@@ -10,7 +10,7 @@ class CitiesController < ApplicationController
         random_nums = []
         
         20.times do 
-            num = (rand() * 10).to_i
+            num = (rand() * 200).to_i
            random_nums << num
         end
 

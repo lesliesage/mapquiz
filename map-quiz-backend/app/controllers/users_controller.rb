@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     end
 
     def show 
-        user = User.where('lower(username) = ?', params[:username])[0]
+        # user = User.where('lower(username) = ?', params[:username])[0]
+        user = User.find_by(username: params[:username])
         render json: user.to_json(user_serializer)
     end
 

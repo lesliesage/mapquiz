@@ -18,8 +18,8 @@ class Score extends Component {
                 className="progress-bar"
               >
                 <span className="sr-only">{`${Math.round(
-                  this.props.score
-                )}`}</span>
+                  this.props.score 
+                )}`}{console.log(Math.round(this.props.score))}</span>
               </div>
             </div>
           )}

@@ -3,6 +3,7 @@ import LeaderBoard from "./LeaderBoard.js";
 import MyStats from "./MyStats.js";
 import Deets from "./Deets.js";
 import { Grid, Header } from "semantic-ui-react";
+import FormContainer from "./FormContainer";
 
 class StatsContainer extends Component {
   state = {
@@ -29,6 +30,13 @@ class StatsContainer extends Component {
 
   render() {
     return (
+      <React.Fragment>
+         <FormContainer
+          hid={this.props.hid}
+          setUser={this.props.setUser}
+          closeForm={this.props.closeForm}
+          toggleForm={this.props.toggleForm}
+        />
       <Grid id="leader-grid">
         <Grid.Row columns={1}>
           <Header as="h1" textAlign="center">
@@ -63,6 +71,7 @@ class StatsContainer extends Component {
         </Grid.Row>
         {/* ) : null} */}
       </Grid>
+      </React.Fragment>
     );
   }
 }

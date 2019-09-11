@@ -25,6 +25,7 @@ class App extends React.Component {
   };
 
   handleLoginClick = () => {
+ 
     this.setState({ open: !this.state.open });
   };
 
@@ -70,7 +71,10 @@ class App extends React.Component {
               exact
               path="/stats"
               render={props => (
-                <StatsContainer {...props} user={this.state.user} />
+                <StatsContainer {...props}  closeForm={this.handleLoginClick}
+                setUser={this.setUser}
+                toggleForm={this.handleLoginClick}
+                hid={this.state.open} user={this.state.user} />
               )}
             />
           </React.Fragment>
