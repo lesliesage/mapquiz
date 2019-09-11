@@ -11,15 +11,15 @@ class Score extends Component {
           from={{ percent: this.props.previousScore / 30 }}
           to={{ percent: this.props.score / 30 }}
         >
-          {props  => (
+          {tree  => (
             <div className="progress vertical">
               <div
-                style={{ height: `${props.percent}%` }}
+                style={{ height: `${tree.percent}%` }}
                 className="progress-bar"
               >
                 <span className="sr-only">{`${Math.round(
                   this.props.score 
-                )}`}{console.log(Math.round(this.props.score))}</span>
+                )}`}</span>
               </div>
             </div>
           )}

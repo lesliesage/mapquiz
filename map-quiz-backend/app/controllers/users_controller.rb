@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :verify_authenticity_token
     
     def index
         users = User.all 
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(params[:user])
+        user = User.create(user_params)
         render json: user.to_json(user_serializer)
     end
 
@@ -31,7 +32,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        byebug
         params.require(:user).permit(:username, :password)
     end
 

@@ -40,9 +40,10 @@ class FormContainer extends React.Component {
   };
 
   handleSubmitNewUser = () => {
-    const newUserDataFromForm = {
+    const newUserDataFromForm = { user: {
       username: this.state.username,
       password: this.state.password
+    }
     };
     console.log(newUserDataFromForm);
     const contentObj = {

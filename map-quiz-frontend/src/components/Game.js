@@ -26,7 +26,7 @@ class Game extends Component {
       game.created_at.slice(8, 10)
     );
     return `${
-      game.score
+      parseInt(game.score)
     } points ${"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0"} ${
       this.months[date.getMonth()]
     } ${date.getFullYear()}`;

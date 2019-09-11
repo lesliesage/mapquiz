@@ -80,7 +80,7 @@ const Map = withScriptjs(
             icon={{
               url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
             }}
-            position={formatlatlng(props.currentCity)}
+            position={formatlatlng(props.currentCity)} animation={window.google.maps.Animation.DROP}
           />
         ) : null}
         {props.yourChoice ? (
