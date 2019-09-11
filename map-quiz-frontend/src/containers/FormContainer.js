@@ -74,7 +74,7 @@ class FormContainer extends React.Component {
         centered={false}
         onClose={this.props.toggleform}
       >
-        <Header icon="browser" content="Login" />
+        <Header icon='loading asterisk' content="Login" />
         <Modal.Content>
           <div className="ui form">
             <div className="field">

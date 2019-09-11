@@ -107,7 +107,9 @@ a, h4, h2, div {
 }
 
 #mapquiz-link {
-  font-size: 2.5rem !important;
+  font-size: 4rem !important;
+  font-weight: 600;
+  text-shadow: 3px 4px #d8dad9;
   position: left;
   text-align: left !important;
   margin-left: 0.5em;
@@ -122,14 +124,9 @@ a, h4, h2, div {
   float: left;
 }
 
-/* #mapquiz-text {
-  font-size: 2.5rem;
-  text-shadow: 3px 4px #d8dad9
-} */
 
-#mapquiz-link.active {
-  font-size: 2.5rem;
-  text-shadow: 3px 4px #d8dad9;
+
+#mapquiz-link.active { 
   border-color: #4a9fda;
   border-bottom-width: 2px;
   border-bottom-style: solid;
