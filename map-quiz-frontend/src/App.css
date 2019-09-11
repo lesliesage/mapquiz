@@ -88,15 +88,13 @@
   left: 20% !important;
 }
 
-#dead-modal{
-  top: 30%
+#dead-modal {
+  top: 30%;
 }
 
-#score-modal{
-  top: 30%
+#score-modal {
+  top: 30%;
 }
-
-
 
 /* #navbar {
   background: #f7f7f7;
@@ -150,6 +148,15 @@
 }
 
 #logout-button {
+  color: #009fda;
+  margin-left: 0.5em;
+  position: relative;
+  top: 0;
+  margin: -0.5em 0;
+  padding-bottom: 0.78571429em;
+  padding-top: 0.78571429em;
+  font-size: 1em;
+  box-shadow: 0 0 0 2px #009fda inset !important;
   background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
