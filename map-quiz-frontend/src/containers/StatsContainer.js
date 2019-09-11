@@ -12,12 +12,11 @@ class StatsContainer extends Component {
   };
 
   componentDidMount() {
-    // if (this.props.user) {
-    // fetch(`http://localhost:3000/users/${this.props.user.username.toLowerCase()}`)
-    fetch(`http://localhost:3000/users/${"Leslie".toLowerCase()}`)
-      .then(resp => resp.json())
-      .then(data => this.setState({ games: data.games }));
-    // } else return null
+    if (this.props.user) {
+      fetch(`http://localhost:3000/users/${this.props.user.username}`)
+        .then(resp => resp.json())
+        .then(data => this.setState({ games: data.games }));
+    } else return null;
   }
 
   setGameForDeets = game => {
