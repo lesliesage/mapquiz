@@ -70,7 +70,8 @@ const Map = withScriptjs(
           styles: MapOptions,
           maxZoom: 7,
           minZoom: 2.3,
-          gestureHandling: "greedy"
+          gestureHandling: "greedy",
+          draggableCursor: "crosshair"
         }}
         onClick={e => handleClick(e, props)}
       >
