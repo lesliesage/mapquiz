@@ -7,7 +7,7 @@ class Deets extends Component {
     return (
       <Grid id="deets">
         {this.props.game
-          ? this.sorted().map((question, index) => (
+          ? this.props.game.questions.map((question, index) => (
               <Question key={question.id} question={question} index={index} />
             ))
           : null}
