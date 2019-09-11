@@ -100,15 +100,6 @@ a, h4, h2, div {
   top: 30%;
 }
 
-/* #navbar {
-  background: #f7f7f7;
-  border: 0 solid transparent;
-  margin: 1rem 0;
-  font-size: 0;
-  font-weight: 400;
-  box-shadow: 0;
-  border-radius: 0rem;
-} */
 #navbar {
   height: 100px;
   padding-left: 10px;
@@ -116,19 +107,13 @@ a, h4, h2, div {
 }
 
 #mapquiz-link {
-  border-color: #4a9fda;
-  background-color: transparent;
-  box-shadow: none;
-  font-weight: 700;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff !important;
-  border-bottom-style: solid;
+  font-size: 2.5rem !important;
+  position: left;
+  text-align: left !important;
+  margin-left: 0.5em;
   border-radius: 0;
   align-self: flex-end;
-  margin: 0 0 -2px;
-  padding: 0.85714286em 1.14285714em;
-  border-bottom-width: 2px;
-  transition: color 0.1s ease;
+  padding: 10px;
   display: inline-flex;
   -webkit-box-align: center;
   align-items: center;
@@ -137,45 +122,32 @@ a, h4, h2, div {
   float: left;
 }
 
-#mapquiz-text {
+/* #mapquiz-text {
   font-size: 2.5rem;
   text-shadow: 3px 4px #d8dad9
+} */
+
+#mapquiz-link.active {
+  font-size: 2.5rem;
+  text-shadow: 3px 4px #d8dad9;
+  border-color: #4a9fda;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+
+#mapquiz-link:hover {
+  border-color: #59b3f0;
 }
 
 .nav-link {
   font-size: 1.5rem !important;
-  margin-top: 2rem !important;
+  margin-top: 1rem !important;
+  padding: 14px !important;
   float: right;
-}
-
-#play-link {
-  background-color: rgba(255, 255, 255, 0.15) !important;
-}
-
-#logout-button {
-  color: #009fda;
-  margin-left: 0.5em;
-  position: relative;
-  top: 0;
-  margin: -0.5em 0;
-  padding-bottom: 0.78571429em;
-  padding-top: 0.78571429em;
-  font-size: 1em;
-  box-shadow: 0 0 0 2px #009fda inset !important;
-  background-color: rgba(255, 255, 255, 0.15) !important;
-}
-
-#stats-link {
-  border-color: #4a9fda;
-  background-color: transparent;
   box-shadow: none;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.15);
-  color: #4a9fda !important;
-  border-bottom-style: solid;
   border-radius: 0;
   align-self: flex-end;
-  border-bottom-width: 2px;
   transition: color 0.1s ease;
   display: inline-flex;
   -webkit-box-align: center;
@@ -184,17 +156,37 @@ a, h4, h2, div {
   -webkit-box-direction: inherit;
 }
 
+a.nav-link:hover {
+  color: #59b3f0 !important;
+  border-color: #59b3f0;
+}
+
+.nav-link.active {
+  border-color: #4a9fda;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+
 #login-button {
-  color: #009fda;
-  margin-left: 0.5em;
-  position: relative;
-  top: 0;
-  margin: -0.5em 0;
-  padding-bottom: 0.78571429em;
-  padding-top: 0.78571429em;
-  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  margin: 14px !important;
   box-shadow: 0 0 0 2px #009fda inset !important;
-  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+#logout-button {
+  border: none;
+  border-radius: 5px;
+  margin: 14px !important;
+  box-shadow: 0 0 0 2px #009fda inset !important;
+}
+
+#login-button:hover {
+  box-shadow: 0 0 0 2px #59b3f0 inset !important;
+}
+
+#logout-button:hover {
+  box-shadow: 0 0 0 2px #59b3f0 inset !important;
 }
 
 #city {
