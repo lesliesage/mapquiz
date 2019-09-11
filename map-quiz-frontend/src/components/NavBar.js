@@ -46,11 +46,11 @@ class NavBar extends Component {
   );
 
   statsButton = (
+    <NavLink exact to="/stats">
     <Button className="nav-link" id="stats-link">
-      <NavLink exact to="/stats">
         Stats
-      </NavLink>
     </Button>
+    </NavLink>
   );
 
   render() {

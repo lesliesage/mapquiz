@@ -4,7 +4,7 @@ import { Button, Grid } from "semantic-ui-react";
 const City = props => {
   return (
     <Grid id="city">
-      <Grid.Row columns={3}>
+      <Grid.Row id='city-row' columns={3}>
         <Grid.Column textAlign="right">
           {props.currentCity ? (
             <h2>Question {props.cityIndex + 1} of 20:</h2>
@@ -15,9 +15,9 @@ const City = props => {
             <h2>Where is {props.currentCity.name}?</h2>
           ) : null}
         </Grid.Column>
-        <Grid.Column textAlign="left">
+        <Grid.Column textAlign="left" id='next-button'>
           {props.nextButton ? (
-            <Button onClick={props.nextQuest}>Next Q</Button>
+            <Button color={'green'} onClick={props.nextQuest}>Next Q</Button>
           ) : null}
         </Grid.Column>
       </Grid.Row>

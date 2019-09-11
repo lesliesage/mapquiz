@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Icon } from "semantic-ui-react";
 import City from "../components/City.js";
 import Map from "../components/Map.js";
 import Score from "../components/Score.js";
 import APIKEY from "../APIKEY.js";
 import DeadModal from '../components/DeadModal'
 import ScoreModal from '../components/ScoreModal'
+import {Spring} from 'react-spring/renderprops'
 
 class QuizContainer extends Component {
   state = {
@@ -17,12 +18,13 @@ class QuizContainer extends Component {
     previousScore: 3000,
     nextButton: false,
     questions: [],
+    unresponsive: false,
     deadModal: false,
     scoreModal: false
   };
 
   createGame = () => {
-    debugger
+    
    let dataObj = {game: {user_id: this.props.user.id, score: this.state.score, questions_attributes: [...this.state.questions]}}
    let configObj = {
       method: 'POST',
@@ -32,7 +34,7 @@ class QuizContainer extends Component {
       body: JSON.stringify(dataObj)
     }
 
-    debugger
+    
 
     fetch('http://localhost:3000/games', configObj).then(resp => resp.json()).then(data => console.log(data))
   }
@@ -72,11 +74,17 @@ class QuizContainer extends Component {
       yourChoice: null,
       score: 3000,
       previousScore: 3000,
+      distance: null,
       nextButton: false,
       questions: [],
       deadModal: false,
+      unresponsive: false,
       scoreModal: false
     })
+  }
+
+  setDistance = (distance) => {
+    this.setState({distance: distance})
   }
 
   addQuestion = (question) => {
@@ -103,8 +111,10 @@ class QuizContainer extends Component {
     this.setState({
       cityIndex: this.state.cityIndex + 1,
       nextButton: !this.state.nextButton,
+      unresponsive: false,
       isMarkerShown: false,
-      yourChoice: null
+      yourChoice: null,
+      distance: null
     });
   };
 
@@ -121,12 +131,17 @@ class QuizContainer extends Component {
     }));
   };
 
+  makeUnresp = () => {
+    this.setState({unresponsive: true})
+  }
+
   render() {
     return (
       <div>
         <DeadModal show={this.state.deadModal} closeModal={this.closeModal} resetPlay={this.resetPlay}/>
         <ScoreModal show={this.state.scoreModal} resetPlay={this.resetPlay} score={this.state.score}/>
         <City
+       
           currentCity={this.state.cities[this.state.cityIndex]}
           cityIndex={this.state.cityIndex}
           nextButton={this.state.nextButton}
@@ -136,6 +151,9 @@ class QuizContainer extends Component {
           <Grid.Row>
             <Grid.Column width={13}>
               <Map
+                setDistance={this.setDistance}
+                makeUnresp={this.makeUnresp}
+                unresponsive={this.state.unresponsive}
                 showScoreModal={this.showScoreModal}
                 cityIndex={this.state.cityIndex}
                 createGame={this.createGame}
@@ -163,6 +181,11 @@ class QuizContainer extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+                <Spring
+                  from={{ opacity: 0 }}
+                  to={{ opacity: this.state.distance ? 1 : 0}}>
+                  {props => <div id='distance-away' style={props}><Icon name='check circle outline' size={'big'}/><h2>{this.state.distance}</h2></div>}
+                </Spring>
       </div>
     );
   }

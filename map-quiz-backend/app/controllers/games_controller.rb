@@ -13,7 +13,6 @@ class GamesController < ApplicationController
     end
 
     def create
-        byebug
         game = Game.create(game_params)
         render json: game.to_json(game_questions_serializer)
     end

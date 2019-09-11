@@ -15,7 +15,7 @@ class StatsContainer extends Component {
     if (this.props.user) {
       fetch(`http://localhost:3000/users/${this.props.user.username}`)
         .then(resp => resp.json())
-        .then(data => this.setState({ games: data.games }));
+        .then(data => {console.log(data); this.setState({ games: data.games })});
     } else return null;
   }
 

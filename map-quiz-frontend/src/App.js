@@ -39,6 +39,7 @@ class App extends React.Component {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"
         />
+        <link href="https://fonts.googleapis.com/css?family=Overpass|Varela+Round&display=swap" rel="stylesheet"></link>
         <Router>
           <React.Fragment>
             <NavBar

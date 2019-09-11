@@ -1,3 +1,7 @@
+a, h4, h2, div {
+  font-family: 'Overpass', sans-serif !important;
+}
+
 .App {
   text-align: center;
 }
@@ -135,6 +139,7 @@
 
 #mapquiz-text {
   font-size: 2.5rem;
+  text-shadow: 3px 4px #d8dad9
 }
 
 .nav-link {
@@ -166,7 +171,7 @@
   box-shadow: none;
   font-weight: 700;
   background: rgba(255, 255, 255, 0.15);
-  color: #fff !important;
+  color: #4a9fda !important;
   border-bottom-style: solid;
   border-radius: 0;
   align-self: flex-end;
@@ -194,12 +199,27 @@
 
 #city {
   height: 59px;
+  
+}
+
+#city-row{
+  left: 8% !important;
+}
+
+#next-button{
+  right: 10% !important;
+  transition: 3s;
+}
+
+#distance-away{
+  color: red;
+  width: 80%;
 }
 
 .progress {
   background-color: #f5f5f5;
   border-radius: 3px;
-  box-shadow: none;
+  box-shadow: none
 }
 
 .progress.vertical {
@@ -208,6 +228,7 @@
   height: 600px;
   display: inline-block;
   margin-right: 10px;
+  background: #A8A8A8
 }
 
 .progress {

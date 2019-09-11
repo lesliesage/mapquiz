@@ -8,7 +8,7 @@ class Leader extends Component {
       <React.Fragment>
         <Grid.Column textAlign='right'>{this.props.index}.</Grid.Column>
         <Grid.Column>{this.props.game.user.username}</Grid.Column>
-        <Grid.Column>{this.props.game.score}</Grid.Column>
+        <Grid.Column>{parseInt(this.props.game.score)}</Grid.Column>
       </React.Fragment>
     );
   }

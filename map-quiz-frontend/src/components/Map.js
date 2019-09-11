@@ -24,6 +24,8 @@ import MapOptions from "../MapOptions.json";
 
 // {myLatLng = new google.maps.LatLng({lat: -34, lng: 151})}
 let handleClick = (e, props) => {
+  
+if (props.unresponsive === false){
   props.toggleMarker();
   let latLng = e.latLng;
   props.setChoice(latLng);
@@ -35,16 +37,19 @@ let handleClick = (e, props) => {
     window.google.maps.geometry.spherical.computeDistanceBetween(
       latLng,
       mylatlng
-    ) / 10000;
-  // console.log(distance);
-  if (props.currentScore - distance >= 0) {
-    props.setScore(distance);
+    ) / 1000;
+  console.log(distance);
+  let minus = distance/10
+  if (props.currentScore - minus >= 0) {
+    props.setScore(minus);
     props.toggleNextButton();
     let formattedQuestion = {
       distance: distance,
       city_id: props.currentCity.id
     };
     props.addQuestion(formattedQuestion);
+    props.setDistance(`You were ${parseInt(distance)} km away. (-${parseInt(minus)} points)`)
+    props.makeUnresp()
 
     if (props.cityIndex >= 19) {
       props.createGame();
@@ -52,7 +57,9 @@ let handleClick = (e, props) => {
     }
   } else {
     props.showModal();
+    props.makeUnresp()
   }
+}
 };
 
 let formatlatlng = currentCity => {
@@ -74,11 +81,12 @@ const Map = withScriptjs(
           draggableCursor: "crosshair"
         }}
         onClick={e => handleClick(e, props)}
+        
       >
         {props.isMarkerShown && props.currentCity ? (
           <Marker
             icon={{
-              url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+              url: "https://www.google.com/mapfiles/arrow.png"
             }}
             position={formatlatlng(props.currentCity)} animation={window.google.maps.Animation.DROP}
           />
