@@ -1,56 +1,65 @@
 import { NavLink } from "react-router-dom";
 import React, { Component } from "react";
-import { Button } from "semantic-ui-react";
 
 class NavBar extends Component {
+  state = {
+    home: false,
+    play: false,
+    stats: false
+  };
+
+  toggleClass = () => {
+    const currentHome = this.state.home;
+    const currentPlay = this.state.play;
+    const currentStats = this.state.stats;
+    this.setState({
+      home: !currentHome,
+      play: !currentPlay,
+      stats: !currentStats
+    });
+  };
+
   mapQuizButton = (
-    <Button position={"left"} style={{ marginLeft: "0.5em" }} id="mapquiz-link">
-      <NavLink id="mapquiz-text" exact to="/">
-        <img id="logo" src={require("../favicon.ico")} alt="MapQuiz Logo"></img>
-        MapQuiz
-      </NavLink>
-    </Button>
+    <NavLink id="mapquiz-link" exact to="/">
+      <img id="logo" src={require("../favicon.ico")} alt="MapQuiz Logo"></img>
+      MapQuiz
+    </NavLink>
   );
 
   loginButton = (
-    <Button
+    <NavLink
+      exact
+      to="/"
       className="nav-link"
-      position={null}
       id="login-button"
-      style={{ marginLeft: "0.5em" }}
       onClick={this.props.handleLoginClick}
     >
       Login
-    </Button>
+    </NavLink>
   );
 
   logoutButton = (
-    <Button
+    <NavLink
+      exact
+      to="/"
       className="nav-link"
-      style={{ marginLeft: "0.5em" }}
       id="logout-button"
       onClick={this.props.handleLogoutClick}
     >
-      <NavLink exact to="/">
-        Logout
-      </NavLink>
-    </Button>
+      Logout
+    </NavLink>
   );
 
   playButton = (
-    <Button className="nav-link" id="play-link">
-      <NavLink exact to="/play">
-        Play
-      </NavLink>
-    </Button>
+    <NavLink exact to="/play" className="nav-link">
+      Play
+    </NavLink>
   );
 
   statsButton = (
-    <Button className="nav-link" id="stats-link">
-      <NavLink exact to="/stats">
-        Stats
-      </NavLink>
-    </Button>
+    <NavLink exact to="/stats" className="nav-link">
+      Stats
+    </NavLink>
   );
 
   render() {
