@@ -72,7 +72,7 @@ class App extends React.Component {
             <Route
               exact
               path="/play"
-              render={props => this.state.user ? <QuizContainer {...props} user={this.state.user} /> : <Redirect to='/' />
+              render={props => localStorage.getItem("token") ? <QuizContainer {...props} user={this.state.user} /> : <Redirect to='/' />
               }
             />
             <Route

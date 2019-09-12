@@ -27,11 +27,11 @@ class ScoreModal extends React.Component {
             </Button>
           </NavLink>
 
-          {/* <Button basic color='red' inverted onClick={this.props.closeModal}><Icon name='remove'/>Close</Button> */}
-        </Modal.Actions>
-      </Modal>
-    );
-  }
-}
+                <Button basic color='red' inverted onClick={this.props.closeScoreModal}><Icon name='remove'/>Close</Button>
+            </Modal.Actions>
+            </Modal>
+        )
+    }
+};
 
 export default ScoreModal;
