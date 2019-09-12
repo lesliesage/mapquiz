@@ -56,9 +56,9 @@ class FormContainer extends React.Component {
     };
     fetch(`http://localhost:3000/users`, contentObj)
       .then(resp => resp.json())
-      .then(user => {
-        if (user) {
-          this.props.setUser(user);
+      .then(data => {
+        if (data) {
+          this.props.setUser(data.user);
           this.props.closeForm();
           this.setRedirect();
         } else {
