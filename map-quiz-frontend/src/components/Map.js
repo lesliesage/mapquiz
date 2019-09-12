@@ -51,7 +51,7 @@ if (props.unresponsive === false){
     props.setDistance(`You guessed ${parseInt(distance)} km from ${props.currentCity.name}, ${props.currentCity.country}. (-${parseInt(minus)} points)`)
     props.makeUnresp()
 
-    if (props.cityIndex >= 2) {
+    if (props.cityIndex >= 9) {
       props.createGame();
       props.showScoreModal();
     }

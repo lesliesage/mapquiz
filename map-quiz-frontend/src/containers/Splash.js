@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import FormContainer from "./FormContainer";
-import Video from "../resources/giphy.mp4";
+import Video from "../resources/splash.mp4";
 
 class Splash extends Component {
   state = {
-    videoURL: "../resources.giphy.mp4"
+    videoURL: "../resources.splash.mp4"
   };
   render() {
     return (
