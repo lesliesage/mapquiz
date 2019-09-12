@@ -4,9 +4,9 @@ import City from "../components/City.js";
 import Map from "../components/Map.js";
 import Score from "../components/Score.js";
 import APIKEY from "../APIKEY.js";
-import DeadModal from '../components/DeadModal'
-import ScoreModal from '../components/ScoreModal'
-import {Spring} from 'react-spring/renderprops'
+import DeadModal from "../components/DeadModal";
+import ScoreModal from "../components/ScoreModal";
+import { Spring } from "react-spring/renderprops";
 
 class QuizContainer extends Component {
   state = {
@@ -24,44 +24,49 @@ class QuizContainer extends Component {
   };
 
   createGame = () => {
-    
-   let dataObj = {game: {user_id: this.props.user.id, score: this.state.score, questions_attributes: [...this.state.questions]}}
-   let configObj = {
-      method: 'POST',
+    let dataObj = {
+      game: {
+        user_id: this.props.user.id,
+        score: this.state.score,
+        questions_attributes: [...this.state.questions]
+      }
+    };
+    let configObj = {
+      method: "POST",
       headers: {
-        "Content-Type": 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(dataObj)
-    }
+    };
 
-    
-
-    fetch('http://localhost:3000/games', configObj).then(resp => resp.json()).then(data => console.log(data))
-  }
+    fetch("http://localhost:3000/games", configObj)
+      .then(resp => resp.json())
+      .then(data => console.log(data));
+  };
 
   showScoreModal = () => {
     this.setState({
       scoreModal: true
-    })
-  }
+    });
+  };
 
   closeScoreModal = () => {
     this.setState({
       scoreModal: false
-    })
-  }
+    });
+  };
 
-    showModal = () => {
-      this.setState({
-          deadModal: true
-      })
-  }
+  showModal = () => {
+    this.setState({
+      deadModal: true
+    });
+  };
 
   closeModal = () => {
     this.setState({
-        deadModal: false
-    })
-  }
+      deadModal: false
+    });
+  };
 
   resetPlay = () => {
     fetch("http://localhost:3000/randomtwenty")
@@ -80,18 +85,18 @@ class QuizContainer extends Component {
       deadModal: false,
       unresponsive: false,
       scoreModal: false
-    })
-  }
+    });
+  };
 
-  setDistance = (distance) => {
-    this.setState({distance: distance})
-  }
+  setDistance = distance => {
+    this.setState({ distance: distance });
+  };
 
-  addQuestion = (question) => {
+  addQuestion = question => {
     this.setState({
       questions: [...this.state.questions, question]
-    })
-  }
+    });
+  };
 
   componentDidMount() {
     fetch("http://localhost:3000/randomtwenty")
@@ -132,21 +137,41 @@ class QuizContainer extends Component {
   };
 
   makeUnresp = () => {
-    this.setState({unresponsive: true})
-  }
+    this.setState({ unresponsive: true });
+  };
 
   render() {
     return (
       <div>
-        <DeadModal show={this.state.deadModal} closeModal={this.closeModal} resetPlay={this.resetPlay}/>
-        <ScoreModal show={this.state.scoreModal} resetPlay={this.resetPlay} score={this.state.score}/>
+        <DeadModal
+          show={this.state.deadModal}
+          closeModal={this.closeModal}
+          resetPlay={this.resetPlay}
+        />
+        <ScoreModal
+          show={this.state.scoreModal}
+          resetPlay={this.resetPlay}
+          score={this.state.score}
+        />
         <City
-       
           currentCity={this.state.cities[this.state.cityIndex]}
           cityIndex={this.state.cityIndex}
           nextButton={this.state.nextButton}
           nextQuest={this.nextQuest}
         />
+        <Spring
+          from={{ opacity: 0 }}
+          to={{ opacity: this.state.distance ? 1 : 0 }}
+        >
+          {props => (
+            <div id="distance-away" style={props}>
+              <h4>
+                <Icon name="check circle outline" size={"medium"} />
+                {this.state.distance}
+              </h4>
+            </div>
+          )}
+        </Spring>
         <Grid id="game-grid">
           <Grid.Row>
             <Grid.Column width={13}>
@@ -169,7 +194,7 @@ class QuizContainer extends Component {
                 isMarkerShown={this.state.isMarkerShown}
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${APIKEY}&libraries=geometry`}
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `800px` }} />}
+                containerElement={<div style={{ height: `650px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
               />
             </Grid.Column>
@@ -181,11 +206,6 @@ class QuizContainer extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-                <Spring
-                  from={{ opacity: 0 }}
-                  to={{ opacity: this.state.distance ? 1 : 0}}>
-                  {props => <div id='distance-away' style={props}><Icon name='check circle outline' size={'big'}/><h2>{this.state.distance}</h2></div>}
-                </Spring>
       </div>
     );
   }

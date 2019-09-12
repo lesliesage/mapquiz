@@ -48,10 +48,10 @@ if (props.unresponsive === false){
       city_id: props.currentCity.id
     };
     props.addQuestion(formattedQuestion);
-    props.setDistance(`You were ${parseInt(distance)} km away. (-${parseInt(minus)} points)`)
+    props.setDistance(`You guessed ${parseInt(distance)} km from ${props.currentCity.name}, ${props.currentCity.country}. (-${parseInt(minus)} points)`)
     props.makeUnresp()
 
-    if (props.cityIndex >= 19) {
+    if (props.cityIndex >= 2) {
       props.createGame();
       props.showScoreModal();
     }
