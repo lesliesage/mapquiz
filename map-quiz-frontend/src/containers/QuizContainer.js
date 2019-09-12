@@ -139,7 +139,7 @@ class QuizContainer extends Component {
     return (
       <div>
         <DeadModal show={this.state.deadModal} closeModal={this.closeModal} resetPlay={this.resetPlay}/>
-        <ScoreModal show={this.state.scoreModal} resetPlay={this.resetPlay} score={this.state.score}/>
+        <ScoreModal closeScoreModal={this.closeScoreModal} show={this.state.scoreModal} resetPlay={this.resetPlay} score={this.state.score}/>
         <City
        
           currentCity={this.state.cities[this.state.cityIndex]}
