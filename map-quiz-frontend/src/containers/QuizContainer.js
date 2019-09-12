@@ -143,8 +143,17 @@ class QuizContainer extends Component {
   render() {
     return (
       <div>
-        <DeadModal show={this.state.deadModal} closeModal={this.closeModal} resetPlay={this.resetPlay}/>
-        <ScoreModal closeScoreModal={this.closeScoreModal} show={this.state.scoreModal} resetPlay={this.resetPlay} score={this.state.score}/>
+        <DeadModal
+          show={this.state.deadModal}
+          closeModal={this.closeModal}
+          resetPlay={this.resetPlay}
+        />
+        <ScoreModal
+          closeScoreModal={this.closeScoreModal}
+          show={this.state.scoreModal}
+          resetPlay={this.resetPlay}
+          score={this.state.score}
+        />
         <City
           currentCity={this.state.cities[this.state.cityIndex]}
           cityIndex={this.state.cityIndex}
@@ -186,7 +195,7 @@ class QuizContainer extends Component {
                 isMarkerShown={this.state.isMarkerShown}
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${APIKEY}&libraries=geometry`}
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `650px` }} />}
+                containerElement={<div style={{ height: `750px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
               />
             </Grid.Column>
