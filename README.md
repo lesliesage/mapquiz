@@ -1,2 +1,1 @@
-# mappy-quizzes
-Map Quiz
+# Map Quiz
