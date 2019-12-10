@@ -7,6 +7,7 @@ import APIKEY from "../APIKEY.js";
 import DeadModal from "../components/DeadModal";
 import ScoreModal from "../components/ScoreModal";
 import { Spring } from "react-spring/renderprops";
+import { API_ROOT } from "../constants/constants.js";
 
 class QuizContainer extends Component {
   state = {
@@ -39,7 +40,7 @@ class QuizContainer extends Component {
       body: JSON.stringify(dataObj)
     };
 
-    fetch("http://localhost:3000/games", configObj)
+    fetch(`${API_ROOT}/games`, configObj)
       .then(resp => resp.json())
       .then(data => console.log(data));
   };
@@ -69,7 +70,7 @@ class QuizContainer extends Component {
   };
 
   resetPlay = () => {
-    fetch("http://localhost:3000/randomtwenty")
+    fetch(`${API_ROOT}/randomtwenty`)
       .then(resp => resp.json())
       .then(cities => this.setState({ cities: cities }));
 
@@ -99,7 +100,7 @@ class QuizContainer extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/randomtwenty")
+    fetch(`${API_ROOT}/randomtwenty`)
       .then(resp => resp.json())
       .then(cities => this.setState({ cities: cities }));
   }

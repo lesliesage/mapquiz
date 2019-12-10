@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Header, Modal } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import RegisterModal from "../components/RegisterModal.js";
+import { API_ROOT } from "../constants/constants.js";
 
 class FormContainer extends React.Component {
   constructor() {
@@ -27,7 +28,7 @@ class FormContainer extends React.Component {
 
   handleSubmitFindUser = () => {
     let obj = {headers: {"Authentication": this.state.password}}
-    fetch(`http://localhost:3000/users/${this.state.username}`, obj)
+    fetch(`${API_ROOT}/users/${this.state.username}`, obj)
       .then(resp => resp.json())
       .then(data => {
         console.log(data)
@@ -54,7 +55,7 @@ class FormContainer extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUserDataFromForm)
     };
-    fetch(`http://localhost:3000/users`, contentObj)
+    fetch(`${API_ROOT}/users`, contentObj)
       .then(resp => resp.json())
       .then(data => {
         if (data) {

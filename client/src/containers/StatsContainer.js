@@ -4,6 +4,7 @@ import MyStats from "./MyStats.js";
 import Deets from "./Deets.js";
 import { Grid, Header } from "semantic-ui-react";
 import FormContainer from "./FormContainer";
+import { API_ROOT } from "../constants/constants.js";
 
 class StatsContainer extends Component {
   state = {
@@ -14,7 +15,7 @@ class StatsContainer extends Component {
   componentDidMount() {
     
     if (localStorage.getItem("token")) {
-      fetch(`http://localhost:3000/token`, {headers: {"Authentication": `${localStorage.getItem("token")}`}})
+      fetch(`${API_ROOT}/token`, {headers: {"Authentication": `${localStorage.getItem("token")}`}})
         .then(resp => resp.json())
         .then(data => {console.log(data); this.setState({ games: data.games })});
     } else return null;

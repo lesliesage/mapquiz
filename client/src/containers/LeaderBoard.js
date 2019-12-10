@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Leader from "../components/Leader.js";
 import { Container, Grid } from "semantic-ui-react";
+import { API_ROOT } from "../constants/constants.js";
 
 class LeaderBoard extends Component {
   state = {
@@ -8,7 +9,7 @@ class LeaderBoard extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/topten")
+    fetch(`${API_ROOT}/topten`)
       .then(resp => resp.json())
       .then(data => this.setState({ leaders: data }));
   }

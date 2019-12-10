@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import NavBar from "./components/NavBar.js";
 import Splash from "./containers/Splash.js";
+import { API_ROOT } from "./constants/constants.js";
 import QuizContainer from "./containers/QuizContainer.js";
 import StatsContainer from "./containers/StatsContainer.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -35,7 +36,7 @@ class App extends React.Component {
 
   componentDidMount() {
     if (localStorage.getItem("token")) {
-      fetch("http://localhost:3000/token", {
+      fetch(`${API_ROOT}/token`, {
         headers: { Authentication: `${localStorage.getItem("token")}` }
       })
         .then(resp => resp.json())
