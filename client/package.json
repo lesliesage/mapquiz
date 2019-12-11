@@ -10,7 +10,8 @@
     "react-scripts": "^3.3.0",
     "react-spring": "^8.0.27",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.0"
+    "semantic-ui-react": "^0.88.0",
+    "serialize-javascript": ">=2.1.1"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
