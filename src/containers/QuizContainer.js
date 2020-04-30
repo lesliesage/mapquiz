@@ -3,11 +3,10 @@ import { Grid, Icon } from "semantic-ui-react";
 import City from "../components/City.js";
 import Map from "../components/Map.js";
 import Score from "../components/Score.js";
-import APIKEY from "../APIKEY.js";
 import DeadModal from "../components/DeadModal";
 import ScoreModal from "../components/ScoreModal";
 import { Spring } from "react-spring/renderprops";
-import { API_ROOT } from "../constants/constants.js";
+import { API_ROOT, GOOGLE_MAPS_KEY } from "../constants/constants.js";
 
 class QuizContainer extends Component {
   state = {
@@ -21,7 +20,7 @@ class QuizContainer extends Component {
     questions: [],
     unresponsive: false,
     deadModal: false,
-    scoreModal: false
+    scoreModal: false,
   };
 
   createGame = () => {
@@ -29,50 +28,50 @@ class QuizContainer extends Component {
       game: {
         user_id: this.props.user.id,
         score: this.state.score,
-        questions_attributes: [...this.state.questions]
-      }
+        questions_attributes: [...this.state.questions],
+      },
     };
     let configObj = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(dataObj)
+      body: JSON.stringify(dataObj),
     };
 
     fetch(`${API_ROOT}/games`, configObj)
-      .then(resp => resp.json())
-      .then(data => console.log(data));
+      .then((resp) => resp.json())
+      .then((data) => console.log(data));
   };
 
   showScoreModal = () => {
     this.setState({
-      scoreModal: true
+      scoreModal: true,
     });
   };
 
   closeScoreModal = () => {
     this.setState({
-      scoreModal: false
+      scoreModal: false,
     });
   };
 
   showModal = () => {
     this.setState({
-      deadModal: true
+      deadModal: true,
     });
   };
 
   closeModal = () => {
     this.setState({
-      deadModal: false
+      deadModal: false,
     });
   };
 
   resetPlay = () => {
     fetch(`${API_ROOT}/randomtwenty`)
-      .then(resp => resp.json())
-      .then(cities => this.setState({ cities: cities }));
+      .then((resp) => resp.json())
+      .then((cities) => this.setState({ cities: cities }));
 
     this.setState({
       cityIndex: 0,
@@ -85,31 +84,31 @@ class QuizContainer extends Component {
       questions: [],
       deadModal: false,
       unresponsive: false,
-      scoreModal: false
+      scoreModal: false,
     });
   };
 
-  setDistance = distance => {
+  setDistance = (distance) => {
     this.setState({ distance: distance });
   };
 
-  addQuestion = question => {
+  addQuestion = (question) => {
     this.setState({
-      questions: [...this.state.questions, question]
+      questions: [...this.state.questions, question],
     });
   };
 
   componentDidMount() {
     fetch(`${API_ROOT}/randomtwenty`)
-      .then(resp => resp.json())
-      .then(cities => this.setState({ cities: cities }));
+      .then((resp) => resp.json())
+      .then((cities) => this.setState({ cities: cities }));
   }
 
   toggleMarker = () => {
     this.setState({ isMarkerShown: !this.state.isMarkerShown });
   };
 
-  setChoice = latlng => {
+  setChoice = (latlng) => {
     this.setState({ yourChoice: latlng });
   };
 
@@ -120,20 +119,20 @@ class QuizContainer extends Component {
       unresponsive: false,
       isMarkerShown: false,
       yourChoice: null,
-      distance: null
+      distance: null,
     });
   };
 
   toggleNextButton = () => {
     this.setState({
-      nextButton: !this.state.nextButton
+      nextButton: !this.state.nextButton,
     });
   };
 
-  setScore = distance => {
-    this.setState(state => ({
+  setScore = (distance) => {
+    this.setState((state) => ({
       score: state.score - distance,
-      previousScore: state.score
+      previousScore: state.score,
     }));
   };
 
@@ -165,7 +164,7 @@ class QuizContainer extends Component {
           from={{ opacity: 0 }}
           to={{ opacity: this.state.distance ? 1 : 0 }}
         >
-          {props => (
+          {(props) => (
             <div id="distance-away" style={props}>
               <h4>
                 <Icon name="check circle outline" size={"medium"} />
@@ -194,7 +193,7 @@ class QuizContainer extends Component {
                 setChoice={this.setChoice}
                 toggleMarker={this.toggleMarker}
                 isMarkerShown={this.state.isMarkerShown}
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${APIKEY}&libraries=geometry`}
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_KEY}&libraries=geometry`}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `750px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
