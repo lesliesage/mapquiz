@@ -1,18 +1,16 @@
-FROM bitnami/ruby:2.6.1
+FROM bitnami/node:7.0.0-r1
 MAINTAINER Angel
 
-# JS Runtime and pg dependencies
-RUN apt-get update && apt-get install -y nodejs libpq-dev
+# Add an user to prevent errors from npm install
+RUN useradd yoshi -m && \
+    sed -i -e 's/\s*Defaults\s*secure_path\s*=/# Defaults secure_path=/' /etc/sudoers && \
+    echo "yoshi ALL=NOPASSWD: ALL" >> /etc/sudoers
 
-# Clean!
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Set the user
+USER yoshi
 
-# Ruby base template
-COPY Gemfile* /app/
-RUN ["chmod", "+x", "./client/scripts/frontend_entrypoint.sh"]
+# Node base template
 WORKDIR /app
 
-RUN bundle install
-
-CMD ["rails", "s"]
+# Main command
+CMD ["node"]
