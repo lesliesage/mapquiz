@@ -22,9 +22,3 @@
 .env.production.local
 
 npm-debug.log*
-
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
