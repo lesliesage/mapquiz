@@ -6,7 +6,8 @@ import Score from "../components/Score.js";
 import DeadModal from "../components/DeadModal";
 import ScoreModal from "../components/ScoreModal";
 import { Spring } from "react-spring/renderprops";
-import { API_ROOT, GOOGLE_MAPS_KEY } from "../constants/constants.js";
+import { API_ROOT } from "../constants/constants.js";
+import GOOGLEMAPS from "../Secrets.js";
 
 class QuizContainer extends Component {
   state = {
@@ -39,8 +40,7 @@ class QuizContainer extends Component {
       body: JSON.stringify(dataObj),
     };
 
-    fetch(`${API_ROOT}/games`, configObj)
-      .then((resp) => resp.json())
+    fetch(`${API_ROOT}/games`, configObj).then((resp) => resp.json());
   };
 
   showScoreModal = () => {
@@ -192,7 +192,7 @@ class QuizContainer extends Component {
                 setChoice={this.setChoice}
                 toggleMarker={this.toggleMarker}
                 isMarkerShown={this.state.isMarkerShown}
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_KEY}&libraries=geometry`}
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLEMAPS}&libraries=geometry`}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `750px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
