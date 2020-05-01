@@ -31,7 +31,6 @@ class FormContainer extends React.Component {
     fetch(`${API_ROOT}/users/${this.state.username}`, obj)
       .then(resp => resp.json())
       .then(data => {
-        console.log(data)
         if (data.authenticated) {
           localStorage.setItem("token", data.token)
           this.props.setUser(data.user);
@@ -49,7 +48,6 @@ class FormContainer extends React.Component {
       password: this.state.password
     }
     };
-    console.log(newUserDataFromForm);
     const contentObj = {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -41,7 +41,6 @@ class QuizContainer extends Component {
 
     fetch(`${API_ROOT}/games`, configObj)
       .then((resp) => resp.json())
-      .then((data) => console.log(data));
   };
 
   showScoreModal = () => {

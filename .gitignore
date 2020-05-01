@@ -14,7 +14,7 @@
 # production
 /build
 .firebase
-.firebase/hosting.YnVpbGQ.cache
+.firebase/*
 
 # misc
 .DS_Store

@@ -17,7 +17,7 @@ class StatsContainer extends Component {
     if (localStorage.getItem("token")) {
       fetch(`${API_ROOT}/token`, {headers: {"Authentication": `${localStorage.getItem("token")}`}})
         .then(resp => resp.json())
-        .then(data => {console.log(data); this.setState({ games: data.games })});
+        .then(data => {this.setState({ games: data.games })});
     } else return null;
   }
 
@@ -30,7 +30,6 @@ class StatsContainer extends Component {
   };
 
   render() {
-    console.log(this.state.games)
     return (
       <React.Fragment>
          <FormContainer

@@ -38,7 +38,6 @@ if (props.unresponsive === false){
       latLng,
       mylatlng
     ) / 1000;
-  console.log(distance);
   let minus = distance/10
   if (props.currentScore - minus >= 0) {
     props.setScore(minus);
@@ -69,7 +68,6 @@ let formatlatlng = currentCity => {
 const Map = withScriptjs(
   withGoogleMap(props => (
     <React.Fragment>
-      {/* {console.log(props)} */}
       <GoogleMap
         defaultZoom={2.3}
         defaultCenter={{ lat: 25, lng: 0 }}
@@ -94,7 +92,7 @@ const Map = withScriptjs(
         {props.yourChoice ? (
           <Marker
             icon={{
-              url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+              url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
             }}
             position={props.yourChoice}
           />
