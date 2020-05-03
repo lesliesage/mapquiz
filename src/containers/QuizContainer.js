@@ -166,7 +166,7 @@ class QuizContainer extends Component {
           {(props) => (
             <div id="distance-away" style={props}>
               <h4>
-                <Icon name="check circle outline" size={"medium"} />
+                <Icon name="check circle outline" size={"small"} />
                 {this.state.distance}
               </h4>
             </div>

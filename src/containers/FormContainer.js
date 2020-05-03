@@ -10,29 +10,29 @@ class FormContainer extends React.Component {
     this.state = {
       username: "",
       password: "",
-      redirect: false
+      redirect: false,
     };
   }
 
-  loginChange = e => {
+  loginChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   setRedirect = () => {
     this.setState({
-      redirect: true
+      redirect: true,
     });
   };
 
   handleSubmitFindUser = () => {
-    let obj = {headers: {"Authentication": this.state.password}}
+    let obj = { headers: { Authentication: this.state.password } };
     fetch(`${API_ROOT}/users/${this.state.username}`, obj)
-      .then(resp => resp.json())
-      .then(data => {
+      .then((resp) => resp.json())
+      .then((data) => {
         if (data.authenticated) {
-          localStorage.setItem("token", data.token)
+          localStorage.setItem("token", data.token);
           this.props.setUser(data.user);
           this.props.closeForm();
           this.setRedirect();
@@ -43,19 +43,20 @@ class FormContainer extends React.Component {
   };
 
   handleSubmitNewUser = () => {
-    const newUserDataFromForm = { user: {
-      username: this.state.username,
-      password: this.state.password
-    }
+    const newUserDataFromForm = {
+      user: {
+        username: this.state.username,
+        password: this.state.password,
+      },
     };
     const contentObj = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newUserDataFromForm)
+      body: JSON.stringify(newUserDataFromForm),
     };
     fetch(`${API_ROOT}/users`, contentObj)
-      .then(resp => resp.json())
-      .then(data => {
+      .then((resp) => resp.json())
+      .then((data) => {
         if (data) {
           this.props.setUser(data.user);
           this.props.closeForm();
@@ -76,7 +77,7 @@ class FormContainer extends React.Component {
         centered={false}
         onClose={this.props.toggleform}
       >
-        <Header icon='loading asterisk' content="Login" />
+        <Header content="Login" />
         <Modal.Content>
           <div className="ui form">
             <div className="field">
