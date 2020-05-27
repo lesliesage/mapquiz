@@ -5,6 +5,7 @@ import Splash from "./containers/Splash.js";
 import { API_ROOT } from "./constants/constants.js";
 import QuizContainer from "./containers/QuizContainer.js";
 import StatsContainer from "./containers/StatsContainer.js";
+import Reset from "./containers/Reset.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 
@@ -72,6 +73,18 @@ class App extends React.Component {
                   closeForm={this.handleLoginClick}
                   setUser={this.setUser}
                   toggleForm={this.handleLoginClick}
+                  hid={this.state.open}
+                />
+              )}
+            />
+            <Route
+              path="/reset"
+              render={props => (
+                <Reset
+                  {...props}
+                  closeForm={this.handleReset}
+                  setUser={this.setUser}
+                  toggleForm={this.handleReset}
                   hid={this.state.open}
                 />
               )}

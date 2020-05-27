@@ -23,6 +23,16 @@ class RegisterModal extends Component {
         <Modal.Content>
           <div className="ui form">
             <div className="field">
+              <label>Email</label>
+              <input
+                onChange={this.props.loginChange}
+                type="text"
+                name="email"
+                placeholder="Email"
+              ></input>
+            </div>
+
+            <div className="field">
               <label>Username</label>
               <input
                 onChange={this.props.loginChange}
