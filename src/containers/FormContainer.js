@@ -8,7 +8,7 @@ class FormContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: "",
+      email: "",
       password: "",
       redirect: false,
     };
@@ -26,9 +26,10 @@ class FormContainer extends React.Component {
     });
   };
 
-  handleSubmitFindUser = () => {
+  handleSubmitFindUser = (e) => {
+    e.preventDefault();
     let obj = { headers: { Authentication: this.state.password } };
-    fetch(`${API_ROOT}/users/${this.state.username}`, obj)
+    fetch(`${API_ROOT}/users/${this.state.email}`, obj)
       .then((resp) => resp.json())
       .then((data) => {
         if (data.authenticated) {
@@ -37,15 +38,16 @@ class FormContainer extends React.Component {
           this.props.closeForm();
           this.setRedirect();
         } else {
-          alert("incorrect username or password");
+          alert("incorrect email or password");
         }
       });
   };
 
-  handleSubmitNewUser = () => {
+  handleSubmitNewUser = (e) => {
+    e.preventDefault();
     const newUserDataFromForm = {
       user: {
-        username: this.state.username,
+        email: this.state.email,
         password: this.state.password,
       },
     };
@@ -67,6 +69,28 @@ class FormContainer extends React.Component {
       });
   };
 
+  handleForgot = (e) => {
+    e.preventDefault();
+    fetch(`${API_ROOT}/forgot`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "ok") {
+          alert("reset link has been emailed.");
+        } else {
+          alert("email not found.");
+        }
+      });
+  };
+
   render() {
     return this.state.redirect ? (
       <Redirect to="/play" />
@@ -81,12 +105,12 @@ class FormContainer extends React.Component {
         <Modal.Content>
           <div className="ui form">
             <div className="field">
-              <label>Username</label>
+              <label>Email</label>
               <input
                 onChange={this.loginChange}
                 type="text"
-                name="username"
-                placeholder="Username"
+                name="email"
+                placeholder="Email"
               ></input>
             </div>
             <div className="field">
@@ -104,6 +128,9 @@ class FormContainer extends React.Component {
             >
               Play
             </div>
+            <div className="ui submit button" onClick={this.handleForgot}>
+              Forgot Password
+            </div>
           </div>
         </Modal.Content>
         <Modal.Actions>
@@ -114,7 +141,7 @@ class FormContainer extends React.Component {
             loginChange={this.loginChange}
             setRedirect={this.setRedirect}
             handleSubmitNewUser={this.handleSubmitNewUser}
-            username={this.state.username}
+            email={this.state.email}
             password={this.state.password}
             redirect={this.state.redirect}
           />
