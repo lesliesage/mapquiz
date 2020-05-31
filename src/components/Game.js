@@ -35,7 +35,7 @@ class Game extends Component {
   render() {
     return (
       <Button
-        onClick={() => this.props.Click(this.props.game)}
+        onClick={() => this.props.handleClick(this.props.game)}
         className="game-button"
       >
         {this.props.game ? this.displayGame(this.props.game) : null}

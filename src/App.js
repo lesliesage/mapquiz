@@ -5,6 +5,8 @@ import Splash from "./containers/Splash.js";
 import { API_ROOT } from "./constants/constants.js";
 import QuizContainer from "./containers/QuizContainer.js";
 import StatsContainer from "./containers/StatsContainer.js";
+import Signup from "./containers/Signup.js";
+import Profile from "./containers/Profile.js";
 import Reset from "./containers/Reset.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
@@ -13,16 +15,16 @@ class App extends React.Component {
   state = {
     open: false,
     user: null,
-    page: "/"
+    page: "/",
   };
 
-  setPage = page => {
+  setPage = (page) => {
     this.setState({ page: page });
   };
 
-  setUser = user => {
+  setUser = (user) => {
     this.setState({
-      user: user
+      user: user,
     });
   };
 
@@ -38,10 +40,10 @@ class App extends React.Component {
   componentDidMount() {
     if (localStorage.getItem("token")) {
       fetch(`${API_ROOT}/token`, {
-        headers: { Authentication: `${localStorage.getItem("token")}` }
+        headers: { Authentication: `Bearer ${localStorage.getItem("token")}` },
       })
-        .then(resp => resp.json())
-        .then(user => this.setUser(user));
+        .then((resp) => resp.json())
+        .then((user) => this.setUser(user));
     }
   }
 
@@ -67,7 +69,7 @@ class App extends React.Component {
             <Route
               exact
               path="/"
-              render={props => (
+              render={(props) => (
                 <Splash
                   {...props}
                   closeForm={this.handleLoginClick}
@@ -79,7 +81,7 @@ class App extends React.Component {
             />
             <Route
               path="/reset"
-              render={props => (
+              render={(props) => (
                 <Reset
                   {...props}
                   closeForm={this.handleReset}
@@ -92,7 +94,7 @@ class App extends React.Component {
             <Route
               exact
               path="/play"
-              render={props =>
+              render={(props) =>
                 localStorage.getItem("token") ? (
                   <QuizContainer {...props} user={this.state.user} />
                 ) : (
@@ -102,8 +104,30 @@ class App extends React.Component {
             />
             <Route
               exact
+              path="/signup"
+              render={(props) =>
+                localStorage.getItem("token") ? (
+                  <Redirect to="/profile" />
+                ) : (
+                  <Signup {...props} setUser={this.setUser} />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/profile"
+              render={(props) =>
+                localStorage.getItem("token") ? (
+                  <Profile {...props} setUser={this.setUser} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+            <Route
+              exact
               path="/stats"
-              render={props => (
+              render={(props) => (
                 <StatsContainer
                   {...props}
                   closeForm={this.LoginClick}
