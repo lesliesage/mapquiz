@@ -13,7 +13,7 @@ import { Redirect } from "react-router-dom";
 
 class App extends React.Component {
   state = {
-    open: false,
+    loginFormOpenStatus: false, // was open: false
     user: null,
     page: "/",
   };
@@ -28,8 +28,9 @@ class App extends React.Component {
     });
   };
 
-  handleLoginClick = () => {
-    this.setState({ open: !this.state.open });
+  handleToggleLoginForm = () => {
+    // was handleLoginClick
+    this.setState({ loginFormOpenStatus: !this.state.loginFormOpenStatus }); // was this.state.open
   };
 
   handleLogoutClick = () => {
@@ -62,7 +63,7 @@ class App extends React.Component {
           <React.Fragment>
             <NavBar
               handleLogoutClick={this.handleLogoutClick}
-              handleLoginClick={this.handleLoginClick}
+              handleToggleLoginForm={this.handleToggleLoginForm}
               user={this.state.user}
               page={this.state.page}
             />
@@ -72,25 +73,13 @@ class App extends React.Component {
               render={(props) => (
                 <Splash
                   {...props}
-                  closeForm={this.handleLoginClick}
+                  handleToggleLoginForm={this.handleToggleLoginForm}
                   setUser={this.setUser}
-                  toggleForm={this.handleLoginClick}
-                  hid={this.state.open}
+                  loginFormOpenStatus={this.state.loginFormOpenStatus}
                 />
               )}
             />
-            <Route
-              path="/reset"
-              render={(props) => (
-                <Reset
-                  {...props}
-                  closeForm={this.handleReset}
-                  setUser={this.setUser}
-                  toggleForm={this.handleReset}
-                  hid={this.state.open}
-                />
-              )}
-            />
+            <Route path="/reset" render={(props) => <Reset {...props} />} />
             <Route
               exact
               path="/play"
@@ -124,20 +113,7 @@ class App extends React.Component {
                 )
               }
             />
-            <Route
-              exact
-              path="/stats"
-              render={(props) => (
-                <StatsContainer
-                  {...props}
-                  closeForm={this.LoginClick}
-                  setUser={this.setUser}
-                  toggleForm={this.handleLoginClick}
-                  hid={this.state.open}
-                  user={this.state.user}
-                />
-              )}
-            />
+            <Route exact path="/stats" render={() => <StatsContainer />} />
           </React.Fragment>
         </Router>
       </div>

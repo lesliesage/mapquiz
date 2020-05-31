@@ -33,7 +33,6 @@ class Forgot extends Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log("hit handleSubmitReset", data);
         if (data.token) {
           localStorage.setItem("token", data.token);
           this.setState({ redirect: true });

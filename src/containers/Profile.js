@@ -20,7 +20,6 @@ class Profile extends Component {
       })
         .then((resp) => resp.json())
         .then((user) => {
-          console.log(user);
           this.setState({
             user: user,
             email: user.email,
@@ -39,7 +38,6 @@ class Profile extends Component {
   handleUpdate = (e) => {
     e.preventDefault();
     e.target.reset();
-    console.log("hit update", this.state);
     fetch(`${API_ROOT}/profile`, {
       method: "PUT",
       headers: {
@@ -56,9 +54,11 @@ class Profile extends Component {
     })
       .then((resp) => resp.json())
       .then((user) => {
-        console.log(user);
-        this.props.setUser(user);
-        alert("profile updated!");
+        if (!!user.id) {
+          alert("Profile updated!");
+        } else {
+          alert("Invalid update. Please try again.");
+        }
       })
       .catch((err) => {
         console.log(err);

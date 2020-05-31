@@ -33,7 +33,6 @@ class Signup extends Component {
     fetch(`${API_ROOT}/signup`, contentObj)
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         if (data.token) {
           this.props.setUser(data.user);
           this.setState({ redirect: true });

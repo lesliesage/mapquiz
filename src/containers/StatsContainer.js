@@ -35,12 +35,7 @@ class StatsContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <Login
-          hid={this.props.hid}
-          setUser={this.props.setUser}
-          closeForm={this.props.closeForm}
-          toggleForm={this.props.toggleForm}
-        />
+        <Login />
         <Grid id="leader-grid">
           <Grid.Row columns={1}>
             <Header as="h1" textAlign="center">

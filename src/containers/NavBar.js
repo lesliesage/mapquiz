@@ -35,7 +35,7 @@ class NavBar extends Component {
       to="/"
       className="nav-link"
       id="login-button"
-      onClick={this.props.handleLoginClick}
+      onClick={this.props.handleToggleLoginForm}
     >
       Login
     </NavLink>

@@ -31,12 +31,11 @@ class Login extends Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         if (data.jwt) {
           this.setState({ redirect: true });
           localStorage.setItem("token", data.jwt);
           this.props.setUser(JSON.parse(data.user));
-          this.props.closeForm();
+          this.props.handleToggleLoginForm();
         } else {
           alert("incorrect email or password");
         }
@@ -70,10 +69,11 @@ class Login extends Component {
       <Redirect to="/play" />
     ) : (
       <Modal
+        closeIcon
         id="login-modal"
-        open={this.props.hid}
+        open={this.props.loginFormOpenStatus}
         centered={false}
-        onClose={this.props.toggleform}
+        onClose={this.props.handleToggleLoginForm}
       >
         <Header content="Login" />
         <Modal.Content>
@@ -106,7 +106,7 @@ class Login extends Component {
           </div>
         </Modal.Content>
         <Modal.Actions>
-          <Button color="red" onClick={this.props.toggleForm}>
+          <Button color="red" onClick={this.props.handleToggleLoginForm}>
             Close
           </Button>
         </Modal.Actions>
