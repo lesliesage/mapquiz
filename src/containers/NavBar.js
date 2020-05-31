@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 class NavBar extends Component {
   state = {
@@ -42,12 +42,7 @@ class NavBar extends Component {
   );
 
   signupButton = (
-    <NavLink
-      exact
-      to="/signup"
-      className="nav-link"
-      id="signup-button"
-    >
+    <NavLink exact to="/signup" className="nav-link" id="signup-button">
       Signup
     </NavLink>
   );

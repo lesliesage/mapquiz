@@ -1,17 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import { API_ROOT } from "../constants/constants.js";
 import { Redirect } from "react-router-dom";
 
-class Signup extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      email: "",
-      username: "",
-      password: "",
-      redirect: false,
-    };
-  }
+class Signup extends Component {
+  state = {
+    email: "",
+    username: "",
+    password: "",
+    redirect: false,
+  };
 
   handleChange = (e) => {
     this.setState({

@@ -1,17 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import { Button, Header, Modal } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../constants/constants.js";
 
-class FormContainer extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      email: "",
-      password: "",
-      redirect: false,
-    };
-  }
+class Login extends Component {
+  state = {
+    email: "",
+    password: "",
+    redirect: false,
+  };
 
   handleChange = (e) => {
     this.setState({
@@ -19,7 +16,7 @@ class FormContainer extends React.Component {
     });
   };
 
-  handleSubmitFindUser = (e) => {
+  handleLogin = (e) => {
     e.preventDefault();
     fetch(`${API_ROOT}/auth`, {
       method: "POST",
@@ -100,10 +97,7 @@ class FormContainer extends React.Component {
               ></input>
             </div>
 
-            <div
-              className="ui submit button"
-              onClick={this.handleSubmitFindUser}
-            >
+            <div className="ui submit button" onClick={this.handleLogin}>
               Play
             </div>
             <div className="ui submit button" onClick={this.handleForgot}>
@@ -121,4 +115,4 @@ class FormContainer extends React.Component {
   }
 }
 
-export default FormContainer;
+export default Login;

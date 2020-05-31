@@ -1,32 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 import { Spring } from "react-spring/renderprops";
 import { Container, Header } from "semantic-ui-react";
 
-class Score extends Component {
-  render() {
-    return (
-      <Container id="score">
-        <Header>Score</Header>
-        <Spring
-          from={{ percent: this.props.previousScore / 30 }}
-          to={{ percent: this.props.score / 30 }}
-        >
-          {tree  => (
-            <div className="progress vertical">
-              <div
-                style={{ height: `${tree.percent}%` }}
-                className="progress-bar"
-              >
-                <span className="sr-only">{`${Math.round(
-                  this.props.score 
-                )}`}</span>
-              </div>
+const Score = (props) => {
+  return (
+    <Container id="score">
+      <Header>Score</Header>
+      <Spring
+        from={{ percent: props.previousScore / 30 }}
+        to={{ percent: props.score / 30 }}
+      >
+        {(tree) => (
+          <div className="progress vertical">
+            <div
+              style={{ height: `${tree.percent}%` }}
+              className="progress-bar"
+            >
+              <span className="sr-only">{`${Math.round(props.score)}`}</span>
             </div>
-          )}
-        </Spring>
-      </Container>
-    );
-  }
-}
+          </div>
+        )}
+      </Spring>
+    </Container>
+  );
+};
 
 export default Score;

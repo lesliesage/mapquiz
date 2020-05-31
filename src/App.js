@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import NavBar from "./components/NavBar.js";
-import Splash from "./containers/Splash.js";
+import NavBar from "./containers/NavBar.js";
+import Splash from "./components/Splash.js";
 import { API_ROOT } from "./constants/constants.js";
 import QuizContainer from "./containers/QuizContainer.js";
 import StatsContainer from "./containers/StatsContainer.js";

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import LeaderBoard from "./LeaderBoard.js";
-import MyStats from "./MyStats.js";
-import Deets from "./Deets.js";
+import MyStats from "../components/MyStats.js";
+import Deets from "../components/Deets.js";
 import { Grid, Header } from "semantic-ui-react";
-import FormContainer from "./FormContainer";
+import Login from "./Login";
 import { API_ROOT } from "../constants/constants.js";
 
 class StatsContainer extends Component {
@@ -35,7 +35,7 @@ class StatsContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <FormContainer
+        <Login
           hid={this.props.hid}
           setUser={this.props.setUser}
           closeForm={this.props.closeForm}

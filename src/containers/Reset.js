@@ -1,18 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 // import { Button, Header, Modal } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../constants/constants.js";
 
-class Forgot extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      email: "",
-      password: "",
-      newPassword: "",
-      redirect: false,
-    };
-  }
+class Forgot extends Component {
+  state = {
+    email: "",
+    password: "",
+    newPassword: "",
+    redirect: false,
+  };
 
   handleChange = (e) => {
     this.setState({

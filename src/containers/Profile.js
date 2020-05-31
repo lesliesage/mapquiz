@@ -1,20 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 // import { Button, Header, Modal } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../constants/constants.js";
 
-class Profile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: null,
-      email: "",
-      username: "",
-      password: "",
-      newPassword: "",
-      redirect: false,
-    };
-  }
+class Profile extends Component {
+  state = {
+    user: null,
+    email: "",
+    username: "",
+    password: "",
+    newPassword: "",
+    redirect: false,
+  };
 
   componentDidMount() {
     if (localStorage.getItem("token")) {
