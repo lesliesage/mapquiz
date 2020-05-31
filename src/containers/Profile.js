@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Button, Header, Modal } from "semantic-ui-react";
+import { Button, Input, Header, Container, Modal } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../constants/constants.js";
 
@@ -69,8 +69,10 @@ class Profile extends Component {
     return this.state.redirect ? (
       <Redirect to="/play" />
     ) : (
-      <div className="main info-pg update" id="profile">
-        <h1>Profile</h1>
+      <div className="profile">
+        <Header as="h1" textAlign="center">
+          <Header.Content>Profile</Header.Content>
+        </Header>
         <div className="form-container">
           <div className="form-labels-container">
             <div className="form-label">Email:</div>
@@ -79,43 +81,43 @@ class Profile extends Component {
             <div className="form-label">New password:</div>
           </div>
           <form className="form-inputs-container" onSubmit={this.handleUpdate}>
-            <input
+            <Input
               className="form-input"
               id="email"
               name="email"
               onChange={this.handleChange}
               value={this.state.email}
-            ></input>
+            ></Input>
             <br />
-            <input
+            <Input
               className="form-input"
               id="username"
               name="username"
               onChange={this.handleChange}
               value={this.state.username}
-            ></input>
+            ></Input>
             <br />
-            <input
+            <Input
               type="password"
               className="form-input"
               id="password"
               name="password"
               onChange={this.handleChange}
               placeholder="Password"
-            ></input>
+            ></Input>
             <br />
-            <input
+            <Input
               type="password"
               className="form-input"
               id="new-password"
               name="newPassword"
               onChange={this.handleChange}
               placeholder="New password"
-            ></input>
+            ></Input>
             <br />
-            <button type="submit" className="btn">
+            <Button type="submit" className="btn affirm" id="pforile-save">
               Save
-            </button>
+            </Button>
           </form>
         </div>
       </div>

@@ -1,3 +1,11 @@
+:root {
+  --mapquizblue: #009fda;
+  --bluehover: #00b2f4;
+  --backgroundlight: #f7f7f7;
+  --progressgrey: #a8a8a8;
+  --lightgrey: #c1c1c1;
+  --progressred: #e94336;
+}
 a,
 h4,
 h2,
@@ -9,34 +17,44 @@ div {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.profile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 16px;
 }
 
-.App-link {
-  color: #61dafb;
+.form-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-inputs-container div {
+  margin: 10px;
+}
+
+.form-labels-container input {
+  padding: 30px;
+}
+
+.form-label {
+  margin-top: 1px;
+  margin-bottom: 0px;
+  margin-right: 20px;
+  padding-top: 22px;
+  padding-bottom: 21px;
+  text-align: left;
+}
+
+.form-input {
+  margin-bottom: 20px;
+  padding: 3px;
+  padding: 4px;
+  border: 1px solid var(--darkgrey);
+  font-size: 20px;
+  color: var(--darkblue);
+  width: 300px;
 }
 
 #leader-grid div.column {
@@ -77,6 +95,37 @@ div {
   width: 300px;
 }
 
+.btn {
+  color: var(--backgroundlight) !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.affirm {
+  background-color: var(--mapquizblue) !important;
+}
+
+.affirm:hover,
+.affirm:active,
+.affirm:focus {
+  background-color: var(--bluehover) !important;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+}
+
+.deny {
+  background-color: var(--progressgrey) !important;
+}
+
+.deny:hover,
+.deny:active,
+.deny:focus {
+  background-color: var(--lightgrey) !important;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+}
+
 #logo {
   height: 50px;
 }
@@ -86,7 +135,6 @@ div {
   top: 30% !important;
   left: 20% !important;
   right: 20% !important;
-  overflow: hidden !important;
 }
 
 #sign-up {
@@ -112,7 +160,6 @@ div {
 #mapquiz-link {
   font-size: 4rem !important;
   font-weight: 600;
-  text-shadow: 3px 4px #d8dad9;
   position: left;
   text-align: left !important;
   margin-left: 0.5em;
@@ -127,14 +174,14 @@ div {
   float: left;
 }
 
-#mapquiz-link.active {
-  border-color: #4a9fda;
+#mapquiz-link:active {
+  border-color: var(--mapquizblue);
   border-bottom-width: 2px;
   border-bottom-style: solid;
 }
 
 #mapquiz-link:hover {
-  border-color: #59b3f0;
+  border-color: var(--bluehover);
 }
 
 .nav-link {
@@ -146,7 +193,7 @@ div {
   font-weight: 700;
   border-radius: 0;
   align-self: flex-end;
-  transition: color 0.1s ease;
+  transition: color 0.1s;
   display: inline-flex;
   -webkit-box-align: center;
   align-items: center;
@@ -155,36 +202,27 @@ div {
 }
 
 a.nav-link:hover {
-  color: #59b3f0 !important;
-  border-color: #59b3f0;
+  color: var(--bluehover) !important;
+  border-color: var(--bluehover);
 }
 
-.nav-link.active {
-  border-color: #4a9fda;
+.nav-link:active {
+  border-color: var(--mapquizblue);
   border-bottom-width: 2px;
   border-bottom-style: solid;
 }
 
-#login-button {
-  border: none;
-  border-radius: 5px;
-  margin: 14px !important;
-  box-shadow: 0 0 0 2px #009fda inset !important;
-}
-
+#login-button,
 #logout-button {
   border: none;
   border-radius: 5px;
   margin: 14px !important;
-  box-shadow: 0 0 0 2px #009fda inset !important;
+  box-shadow: 0 0 0 2px var(--mapquizblue) inset !important;
 }
 
-#login-button:hover {
-  box-shadow: 0 0 0 2px #59b3f0 inset !important;
-}
-
+#login-button:hover,
 #logout-button:hover {
-  box-shadow: 0 0 0 2px #59b3f0 inset !important;
+  box-shadow: 0 0 0 2px var(--bluehover) inset !important;
 }
 
 #city {
@@ -202,14 +240,8 @@ a.nav-link:hover {
 
 #distance-away {
   margin-top: 8px;
-  color: red;
+  color: var(--progressred);
   width: 84%;
-}
-
-.progress {
-  background-color: #f5f5f5;
-  border-radius: 3px;
-  box-shadow: none;
 }
 
 .progress.vertical {
@@ -218,14 +250,14 @@ a.nav-link:hover {
   height: 600px;
   display: inline-block;
   margin-right: 10px;
-  background: #a8a8a8;
+  background: var(--progressgrey);
 }
 
 .progress {
   height: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background-color: #f5f5f5;
+  background-color: var(--backgroundlight);
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -245,7 +277,7 @@ a.nav-link:hover {
   line-height: 40px;
   color: #fff;
   text-align: center;
-  background-color: #e94336;
+  background-color: var(--progressred);
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   -webkit-transition: width 0.6s ease;

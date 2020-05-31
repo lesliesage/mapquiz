@@ -37,7 +37,7 @@ class Login extends Component {
           this.props.setUser(JSON.parse(data.user));
           this.props.handleToggleLoginForm();
         } else {
-          alert("incorrect email or password");
+          alert("Incorrect email or password");
         }
       });
   };
@@ -69,11 +69,11 @@ class Login extends Component {
       <Redirect to="/play" />
     ) : (
       <Modal
-        closeIcon
         id="login-modal"
         open={this.props.loginFormOpenStatus}
         centered={false}
         onClose={this.props.handleToggleLoginForm}
+        closeIcon
       >
         <Header content="Login" />
         <Modal.Content>
@@ -84,6 +84,7 @@ class Login extends Component {
                 type="text"
                 name="email"
                 placeholder="Email"
+                autoComplete="username"
                 onChange={this.handleChange}
               ></input>
             </div>
@@ -96,18 +97,14 @@ class Login extends Component {
                 onChange={this.handleChange}
               ></input>
             </div>
-
-            <div className="ui submit button" onClick={this.handleLogin}>
-              Play
-            </div>
-            <div className="ui submit button" onClick={this.handleForgot}>
-              Forgot Password
-            </div>
           </div>
         </Modal.Content>
         <Modal.Actions>
-          <Button color="red" onClick={this.props.handleToggleLoginForm}>
-            Close
+          <Button className="btn affirm" onClick={this.handleLogin}>
+            Play
+          </Button>
+          <Button className="btn deny" onClick={this.handleForgot}>
+            Forgot Password
           </Button>
         </Modal.Actions>
       </Modal>
