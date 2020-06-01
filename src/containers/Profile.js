@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Header, Container, Modal } from "semantic-ui-react";
+import { Button, Input, Header } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../constants/constants.js";
 

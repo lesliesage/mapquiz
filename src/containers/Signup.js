@@ -18,26 +18,23 @@ class Signup extends Component {
 
   handleSubmitNewUser = (e) => {
     e.preventDefault();
-    const newUserDataFromForm = {
-      user: {
+    fetch(`${API_ROOT}/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         email: this.state.email,
         username: this.state.username,
         password: this.state.password,
-      },
-    };
-    const contentObj = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newUserDataFromForm),
-    };
-    fetch(`${API_ROOT}/signup`, contentObj)
+      }),
+    })
       .then((resp) => resp.json())
       .then((data) => {
         if (data.token) {
           this.props.setUser(data.user);
+          localStorage.setItem("token", data.token);
           this.setState({ redirect: true });
         } else {
-          alert("Invalid Signup");
+          alert("Invalid signup. Please try again.");
         }
       });
   };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import "./App.css";
 import NavBar from "./containers/NavBar.js";
 import Splash from "./components/Splash.js";
@@ -11,7 +11,7 @@ import Reset from "./containers/Reset.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 
-class App extends React.Component {
+class App extends Component {
   state = {
     loginFormOpenStatus: false, // was open: false
     user: null,
@@ -96,7 +96,7 @@ class App extends React.Component {
               path="/signup"
               render={(props) =>
                 localStorage.getItem("token") ? (
-                  <Redirect to="/profile" />
+                  <Redirect to="/play" />
                 ) : (
                   <Signup {...props} setUser={this.setUser} />
                 )

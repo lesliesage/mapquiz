@@ -37,7 +37,7 @@ class Forgot extends Component {
           localStorage.setItem("token", data.token);
           this.setState({ redirect: true });
         } else {
-          alert("Invalid reset");
+          alert("Invalid reset. Please try again.");
         }
       });
   };

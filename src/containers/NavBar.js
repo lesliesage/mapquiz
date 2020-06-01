@@ -81,12 +81,10 @@ class NavBar extends Component {
     return (
       <div id="navbar">
         {this.mapQuizButton}
-        {this.props.user ? null : this.loginButton}
-        {this.props.user ? null : this.signupButton}
-        {this.props.user ? this.logoutButton : null}
-        {this.props.user ? this.profileButton : null}
+        {this.props.user ? this.logoutButton : this.loginButton}
+        {this.props.user ? this.profileButton : this.signupButton}
         {this.statsButton}
-        {this.playButton}
+        {this.props.user ? this.playButton : null}
       </div>
     );
   }
