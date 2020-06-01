@@ -1,18 +1,15 @@
-import React from "react";
-import { Button, Header, Modal } from "semantic-ui-react";
+import React, { Component } from "react";
+// import { Button, Header, Modal } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../constants/constants.js";
 
-class Forgot extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      email: "",
-      password: "",
-      newPassword: "",
-      redirect: false,
-    };
-  }
+class Forgot extends Component {
+  state = {
+    email: "",
+    password: "",
+    newPassword: "",
+    redirect: false,
+  };
 
   handleChange = (e) => {
     this.setState({
@@ -36,10 +33,9 @@ class Forgot extends React.Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log("hit handleSubmitReset", data);
         if (data.token) {
           localStorage.setItem("token", data.token);
-          this.setState({ redirect: true }); // TODO: isn't redirecting to "play"
+          this.setState({ redirect: true });
         } else {
           alert("Invalid reset");
         }
@@ -51,7 +47,7 @@ class Forgot extends React.Component {
       <Redirect to="/play" />
     ) : (
       <div className="main info-pg reset">
-        <h1>reset</h1>
+        <h1>Reset</h1>
         <div className="form-container">
           <div className="form-labels-container">
             <div className="form-label">Email:</div>

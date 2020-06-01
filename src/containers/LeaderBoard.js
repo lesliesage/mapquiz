@@ -5,13 +5,13 @@ import { API_ROOT } from "../constants/constants.js";
 
 class LeaderBoard extends Component {
   state = {
-    leaders: []
+    leaders: [],
   };
 
   componentDidMount() {
     fetch(`${API_ROOT}/topten`)
-      .then(resp => resp.json())
-      .then(data => this.setState({ leaders: data }));
+      .then((resp) => resp.json())
+      .then((data) => this.setState({ leaders: data }));
   }
 
   render() {

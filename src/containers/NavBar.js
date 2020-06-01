@@ -1,21 +1,24 @@
-import { NavLink } from "react-router-dom";
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 class NavBar extends Component {
   state = {
     home: false,
     play: false,
-    stats: false
+    stats: false,
+    profile: false,
   };
 
   toggleClass = () => {
     const currentHome = this.state.home;
     const currentPlay = this.state.play;
     const currentStats = this.state.stats;
+    const currentProfile = this.state.profile;
     this.setState({
       home: !currentHome,
       play: !currentPlay,
-      stats: !currentStats
+      stats: !currentStats,
+      profile: !currentProfile,
     });
   };
 
@@ -32,9 +35,21 @@ class NavBar extends Component {
       to="/"
       className="nav-link"
       id="login-button"
-      onClick={this.props.handleLoginClick}
+      onClick={this.props.handleToggleLoginForm}
     >
       Login
+    </NavLink>
+  );
+
+  signupButton = (
+    <NavLink exact to="/signup" className="nav-link" id="signup-button">
+      Signup
+    </NavLink>
+  );
+
+  profileButton = (
+    <NavLink exact to="/profile" className="nav-link">
+      Profile
     </NavLink>
   );
 
@@ -67,9 +82,11 @@ class NavBar extends Component {
       <div id="navbar">
         {this.mapQuizButton}
         {this.props.user ? null : this.loginButton}
+        {this.props.user ? null : this.signupButton}
         {this.props.user ? this.logoutButton : null}
+        {this.props.user ? this.profileButton : null}
         {this.statsButton}
-        {this.props.user ? this.playButton : null}
+        {this.playButton}
       </div>
     );
   }

@@ -1,33 +1,36 @@
 import React from "react";
 import "./App.css";
-import NavBar from "./components/NavBar.js";
-import Splash from "./containers/Splash.js";
+import NavBar from "./containers/NavBar.js";
+import Splash from "./components/Splash.js";
 import { API_ROOT } from "./constants/constants.js";
 import QuizContainer from "./containers/QuizContainer.js";
 import StatsContainer from "./containers/StatsContainer.js";
+import Signup from "./containers/Signup.js";
+import Profile from "./containers/Profile.js";
 import Reset from "./containers/Reset.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 
 class App extends React.Component {
   state = {
-    open: false,
+    loginFormOpenStatus: false, // was open: false
     user: null,
-    page: "/"
+    page: "/",
   };
 
-  setPage = page => {
+  setPage = (page) => {
     this.setState({ page: page });
   };
 
-  setUser = user => {
+  setUser = (user) => {
     this.setState({
-      user: user
+      user: user,
     });
   };
 
-  handleLoginClick = () => {
-    this.setState({ open: !this.state.open });
+  handleToggleLoginForm = () => {
+    // was handleLoginClick
+    this.setState({ loginFormOpenStatus: !this.state.loginFormOpenStatus }); // was this.state.open
   };
 
   handleLogoutClick = () => {
@@ -38,10 +41,10 @@ class App extends React.Component {
   componentDidMount() {
     if (localStorage.getItem("token")) {
       fetch(`${API_ROOT}/token`, {
-        headers: { Authentication: `${localStorage.getItem("token")}` }
+        headers: { Authentication: `Bearer ${localStorage.getItem("token")}` },
       })
-        .then(resp => resp.json())
-        .then(user => this.setUser(user));
+        .then((resp) => resp.json())
+        .then((user) => this.setUser(user));
     }
   }
 
@@ -60,39 +63,27 @@ class App extends React.Component {
           <React.Fragment>
             <NavBar
               handleLogoutClick={this.handleLogoutClick}
-              handleLoginClick={this.handleLoginClick}
+              handleToggleLoginForm={this.handleToggleLoginForm}
               user={this.state.user}
               page={this.state.page}
             />
             <Route
               exact
               path="/"
-              render={props => (
+              render={(props) => (
                 <Splash
                   {...props}
-                  closeForm={this.handleLoginClick}
+                  handleToggleLoginForm={this.handleToggleLoginForm}
                   setUser={this.setUser}
-                  toggleForm={this.handleLoginClick}
-                  hid={this.state.open}
+                  loginFormOpenStatus={this.state.loginFormOpenStatus}
                 />
               )}
             />
-            <Route
-              path="/reset"
-              render={props => (
-                <Reset
-                  {...props}
-                  closeForm={this.handleReset}
-                  setUser={this.setUser}
-                  toggleForm={this.handleReset}
-                  hid={this.state.open}
-                />
-              )}
-            />
+            <Route path="/reset" render={(props) => <Reset {...props} />} />
             <Route
               exact
               path="/play"
-              render={props =>
+              render={(props) =>
                 localStorage.getItem("token") ? (
                   <QuizContainer {...props} user={this.state.user} />
                 ) : (
@@ -102,18 +93,27 @@ class App extends React.Component {
             />
             <Route
               exact
-              path="/stats"
-              render={props => (
-                <StatsContainer
-                  {...props}
-                  closeForm={this.LoginClick}
-                  setUser={this.setUser}
-                  toggleForm={this.handleLoginClick}
-                  hid={this.state.open}
-                  user={this.state.user}
-                />
-              )}
+              path="/signup"
+              render={(props) =>
+                localStorage.getItem("token") ? (
+                  <Redirect to="/profile" />
+                ) : (
+                  <Signup {...props} setUser={this.setUser} />
+                )
+              }
             />
+            <Route
+              exact
+              path="/profile"
+              render={(props) =>
+                localStorage.getItem("token") ? (
+                  <Profile {...props} setUser={this.setUser} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+            <Route exact path="/stats" render={() => <StatsContainer />} />
           </React.Fragment>
         </Router>
       </div>
