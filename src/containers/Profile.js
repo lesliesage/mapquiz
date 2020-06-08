@@ -69,8 +69,8 @@ class Profile extends Component {
     return this.state.redirect ? (
       <Redirect to="/play" />
     ) : (
-      <div className="profile">
-        <Header as="h1" textAlign="center">
+      <div className="user-detail-page">
+        <Header as="h1">
           <Header.Content>Profile</Header.Content>
         </Header>
         <div className="form-container">
@@ -83,7 +83,6 @@ class Profile extends Component {
           <form className="form-inputs-container" onSubmit={this.handleUpdate}>
             <Input
               className="form-input"
-              id="email"
               name="email"
               onChange={this.handleChange}
               value={this.state.email}
@@ -91,7 +90,6 @@ class Profile extends Component {
             <br />
             <Input
               className="form-input"
-              id="username"
               name="username"
               onChange={this.handleChange}
               value={this.state.username}
@@ -100,7 +98,6 @@ class Profile extends Component {
             <Input
               type="password"
               className="form-input"
-              id="password"
               name="password"
               onChange={this.handleChange}
               placeholder="Password"
@@ -109,13 +106,12 @@ class Profile extends Component {
             <Input
               type="password"
               className="form-input"
-              id="new-password"
               name="newPassword"
               onChange={this.handleChange}
               placeholder="New password"
             ></Input>
             <br />
-            <Button type="submit" className="btn affirm" id="pforile-save">
+            <Button type="submit" className="btn affirm">
               Save
             </Button>
           </form>

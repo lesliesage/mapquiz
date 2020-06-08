@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Header, Modal } from "semantic-ui-react";
+import { Button, Input, Header } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../constants/constants.js";
 
@@ -31,11 +31,10 @@ class Login extends Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        if (data.jwt) {
-          this.setState({ redirect: true });
-          localStorage.setItem("token", data.jwt);
+        if (data.token) {
+          localStorage.setItem("token", data.token);
           this.props.setUser(JSON.parse(data.user));
-          this.props.handleToggleLoginForm();
+          this.setState({ redirect: true });
         } else {
           alert("Incorrect email or password");
         }
@@ -68,46 +67,43 @@ class Login extends Component {
     return this.state.redirect ? (
       <Redirect to="/play" />
     ) : (
-      <Modal
-        id="login-modal"
-        open={this.props.loginFormOpenStatus}
-        centered={false}
-        onClose={this.props.handleToggleLoginForm}
-        closeIcon
-      >
-        <Header content="Login" />
-        <Modal.Content>
-          <div className="ui form">
-            <div className="field">
-              <label>Email</label>
-              <input
-                type="text"
-                name="email"
-                placeholder="Email"
-                autoComplete="username"
-                onChange={this.handleChange}
-              ></input>
-            </div>
-            <div className="field">
-              <label>Password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={this.handleChange}
-              ></input>
-            </div>
+      <div className="user-detail-page">
+        <Header as="h1">
+          <Header.Content>Login</Header.Content>
+        </Header>
+        <div className="form-container">
+          <div className="form-labels-container">
+            <div className="form-label">Email:</div>
+            <div className="form-label">Password:</div>
           </div>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button className="btn affirm" onClick={this.handleLogin}>
-            Play
-          </Button>
-          <Button className="btn deny" onClick={this.handleForgot}>
-            Forgot Password
-          </Button>
-        </Modal.Actions>
-      </Modal>
+          <form className="form-inputs-container" onSubmit={this.handleLogin}>
+            <Input
+              className="form-input"
+              type="text"
+              name="email"
+              placeholder="Email"
+              autoComplete="username"
+              onChange={this.handleChange}
+              value={this.state.email}
+            ></Input>
+            <br />
+            <Input
+              className="form-input"
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={this.handleChange}
+            ></Input>
+            <br />
+            <Button type="submit" className="btn affirm">
+              Play
+            </Button>
+            <Button className="btn deny" onClick={this.handleForgot}>
+              Forgot Password
+            </Button>
+          </form>
+        </div>
+      </div>
     );
   }
 }

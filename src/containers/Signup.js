@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { API_ROOT } from "../constants/constants.js";
+import { Button, Input, Header } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
+import { API_ROOT } from "../constants/constants.js";
 
 class Signup extends Component {
   state = {
@@ -43,42 +44,49 @@ class Signup extends Component {
     return this.state.redirect ? (
       <Redirect to="/play" />
     ) : (
-      <div className="main info-pg signup">
-        <h1>Signup</h1>
-        <div className="ui form">
-          <div className="field">
-            <label>Email</label>
-            <input
-              onChange={this.handleChange}
+      <div className="user-detail-page">
+        <Header as="h1">
+          <Header.Content>Signup</Header.Content>
+        </Header>
+        <div className="form-container">
+          <div className="form-labels-container">
+            <div className="form-label">Email:</div>
+            <div className="form-label">Username:</div>
+            <div className="form-label">Password:</div>
+          </div>
+          <form className="form-inputs-container" onSubmit={this.handleSubmitNewUser}>
+            <Input
+              className="form-input"
               type="text"
               name="email"
               placeholder="Email"
               autoComplete="username"
-            ></input>
-          </div>
-
-          <div className="field">
-            <label>Username</label>
-            <input
               onChange={this.handleChange}
+              value={this.state.email}
+            ></Input>
+            <br />
+            <Input
+              className="form-input"
               type="text"
               name="username"
               placeholder="Username"
               autoComplete="nickname"
-            ></input>
-          </div>
-
-          <div className="field">
-            <label>Password</label>
-            <input
               onChange={this.handleChange}
-              name="password"
+              value={this.state.username}
+            ></Input>
+            <br />
+            <Input
+              className="form-input"
               type="password"
-            ></input>
-          </div>
-          <div className="ui submit button" onClick={this.handleSubmitNewUser}>
-            Signup
-          </div>
+              name="password"
+              placeholder="Password"
+              onChange={this.handleChange}
+            ></Input>
+            <br />
+            <Button type="submit" className="btn affirm">
+              Save
+            </Button>
+          </form>
         </div>
       </div>
     );

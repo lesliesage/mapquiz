@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./containers/NavBar.js";
 import Splash from "./components/Splash.js";
@@ -8,12 +8,12 @@ import StatsContainer from "./containers/StatsContainer.js";
 import Signup from "./containers/Signup.js";
 import Profile from "./containers/Profile.js";
 import Reset from "./containers/Reset.js";
+import Login from "./containers/Login.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 
 class App extends Component {
   state = {
-    loginFormOpenStatus: false, // was open: false
     user: null,
     page: "/",
   };
@@ -26,11 +26,6 @@ class App extends Component {
     this.setState({
       user: user,
     });
-  };
-
-  handleToggleLoginForm = () => {
-    // was handleLoginClick
-    this.setState({ loginFormOpenStatus: !this.state.loginFormOpenStatus }); // was this.state.open
   };
 
   handleLogoutClick = () => {
@@ -79,7 +74,10 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/reset" render={(props) => <Reset {...props} />} />
+            <Route
+              path="/reset"
+              render={(props) => <Reset {...props} setUser={this.setUser} />}
+            />
             <Route
               exact
               path="/play"
@@ -99,6 +97,17 @@ class App extends Component {
                   <Redirect to="/play" />
                 ) : (
                   <Signup {...props} setUser={this.setUser} />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/login"
+              render={(props) =>
+                localStorage.getItem("token") ? (
+                  <Redirect to="/play" />
+                ) : (
+                  <Login {...props} setUser={this.setUser} />
                 )
               }
             />
