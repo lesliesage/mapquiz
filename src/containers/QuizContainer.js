@@ -55,13 +55,13 @@ class QuizContainer extends Component {
     });
   };
 
-  showModal = () => {
+  showDeadModal = () => {
     this.setState({
       deadModal: true,
     });
   };
 
-  closeModal = () => {
+  closeDeadModal = () => {
     this.setState({
       deadModal: false,
     });
@@ -144,12 +144,12 @@ class QuizContainer extends Component {
       <div>
         <DeadModal
           show={this.state.deadModal}
-          closeModal={this.closeModal}
+          close={this.closeDeadModal}
           resetPlay={this.resetPlay}
         />
         <ScoreModal
-          closeScoreModal={this.closeScoreModal}
           show={this.state.scoreModal}
+          close={this.closeScoreModal}
           resetPlay={this.resetPlay}
           score={this.state.score}
         />
@@ -182,7 +182,7 @@ class QuizContainer extends Component {
                 showScoreModal={this.showScoreModal}
                 cityIndex={this.state.cityIndex}
                 createGame={this.createGame}
-                showModal={this.showModal}
+                showDeadModal={this.showDeadModal}
                 currentScore={this.state.score}
                 addQuestion={this.addQuestion}
                 toggleNextButton={this.toggleNextButton}

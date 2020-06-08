@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 const DeadModal = (props) => {
   return (
     <Modal className="game-over" open={props.show}>
-      
       <Header icon="thumbs down outline" content="Game Over" />
 
       <Modal.Content>
@@ -23,12 +22,11 @@ const DeadModal = (props) => {
           </NavLink>
         </Button>
 
-        <Button onClick={props.closeModal} className="game-over-btn">
+        <Button onClick={props.close} className="game-over-btn">
           <Icon name="remove" />
           Close
         </Button>
       </Modal.Actions>
-
     </Modal>
   );
 };

@@ -42,7 +42,7 @@ let handleClick = (e, props) => {
         props.showScoreModal();
       }
     } else {
-      props.showModal();
+      props.showDeadModal();
       props.makeUnresp();
     }
   }

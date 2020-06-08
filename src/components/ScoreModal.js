@@ -5,9 +5,8 @@ import { NavLink } from "react-router-dom";
 const ScoreModal = (props) => {
   return (
     <Modal className="game-over" open={props.show}>
-      
       <Header icon="star outline" content="You Won!!" />
-      
+
       <Modal.Content>
         <h3 className="modal-text">Your Score: {Math.round(props.score)}</h3>
       </Modal.Content>
@@ -23,12 +22,11 @@ const ScoreModal = (props) => {
           </NavLink>
         </Button>
 
-        <Button onClick={props.closeModal} className="game-over-btn">
+        <Button onClick={props.close} className="game-over-btn">
           <Icon name="remove" />
           Close
         </Button>
       </Modal.Actions>
-
     </Modal>
   );
 };
