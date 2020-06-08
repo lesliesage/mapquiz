@@ -4,74 +4,60 @@ import { NavLink } from "react-router-dom";
 class NavBar extends Component {
   state = {
     home: false,
+    login: false,
     play: false,
     stats: false,
     profile: false,
   };
 
-  toggleClass = () => {
-    const currentHome = this.state.home;
-    const currentPlay = this.state.play;
-    const currentStats = this.state.stats;
-    const currentProfile = this.state.profile;
-    this.setState({
-      home: !currentHome,
-      play: !currentPlay,
-      stats: !currentStats,
-      profile: !currentProfile,
-    });
-  };
-
-  mapQuizButton = (
-    <NavLink id="mapquiz-link" exact to="/">
-      <img id="logo" src={require("../favicon.ico")} alt="MapQuiz Logo"></img>
+  mapQuizLink = (
+    <NavLink className="nav-link nav-title" exact to="/">
+      <img
+        id="logo"
+        className="navLink"
+        src={require("../favicon.ico")}
+        alt="MapQuiz Logo"
+      ></img>
       MapQuiz
     </NavLink>
   );
 
-  loginButton = (
-    <NavLink
-      exact
-      to="/"
-      className="nav-link"
-      id="login-button"
-      onClick={this.props.handleToggleLoginForm}
-    >
+  loginLink = (
+    <NavLink exact to="/login" className="nav-link">
       Login
     </NavLink>
   );
 
-  signupButton = (
-    <NavLink exact to="/signup" className="nav-link" id="signup-button">
+  signupLink = (
+    <NavLink exact to="/signup" className="nav-link">
       Signup
     </NavLink>
   );
 
-  profileButton = (
+  profileLink = (
     <NavLink exact to="/profile" className="nav-link">
       Profile
     </NavLink>
   );
 
-  logoutButton = (
+  logoutLink = (
     <NavLink
       exact
       to="/"
       className="nav-link"
-      id="logout-button"
       onClick={this.props.handleLogoutClick}
     >
       Logout
     </NavLink>
   );
 
-  playButton = (
+  playLink = (
     <NavLink exact to="/play" className="nav-link">
       Play
     </NavLink>
   );
 
-  statsButton = (
+  statsLink = (
     <NavLink exact to="/stats" className="nav-link">
       Stats
     </NavLink>
@@ -80,11 +66,13 @@ class NavBar extends Component {
   render() {
     return (
       <div id="navbar">
-        {this.mapQuizButton}
-        {this.props.user ? this.logoutButton : this.loginButton}
-        {this.props.user ? this.profileButton : this.signupButton}
-        {this.statsButton}
-        {this.props.user ? this.playButton : null}
+        <div>{this.mapQuizLink}</div>
+        <div>
+          {this.props.user ? this.playLink : null}
+          {this.statsLink}
+          {this.props.user ? this.profileLink : this.signupLink}
+          {this.props.user ? this.logoutLink : this.loginLink}
+        </div>
       </div>
     );
   }

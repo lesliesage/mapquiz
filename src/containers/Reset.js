@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Button, Header, Modal } from "semantic-ui-react";
+import { Button, Input, Header } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../constants/constants.js";
 
@@ -35,6 +35,7 @@ class Forgot extends Component {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
+          this.props.setUser(JSON.parse(data.user));
           this.setState({ redirect: true });
         } else {
           alert("Invalid reset. Please try again.");
@@ -46,36 +47,34 @@ class Forgot extends Component {
     return this.state.redirect ? (
       <Redirect to="/play" />
     ) : (
-      <div className="main info-pg reset">
-        <h1>Reset</h1>
+      <div className="user-detail-page">
+        <Header as="h1">
+          <Header.Content>Reset</Header.Content>
+        </Header>
         <div className="form-container">
           <div className="form-labels-container">
             <div className="form-label">Email:</div>
             <div className="form-label">New password:</div>
           </div>
           <form className="form-inputs-container" onSubmit={this.handleReset}>
-            <input
+            <Input
               className="form-input"
-              id="email"
               name="email"
               onChange={this.handleChange}
               value={this.state.email}
-              placeholder="Email"
-            ></input>
+            ></Input>
             <br />
-            <input
+            <Input
               type="password"
               className="form-input"
-              id="password"
               name="password"
               onChange={this.handleChange}
-              value={this.state.password}
               placeholder="New password"
-            ></input>
+            ></Input>
             <br />
-            <button type="submit" className="btn">
+            <Button type="submit" className="btn affirm">
               Save
-            </button>
+            </Button>
           </form>
         </div>
       </div>

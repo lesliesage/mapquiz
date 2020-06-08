@@ -17,11 +17,85 @@ div {
   text-align: center;
 }
 
-.profile {
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+.nav-link {
+  font-size: 1.5rem !important;
+  margin-top: 1rem !important;
+  padding: 14px !important;
+  box-shadow: none;
+  font-weight: 700;
+  border-radius: 0;
+  transition: color 0.1s;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: inherit;
+  -webkit-box-direction: inherit;
+}
+
+.nav-link:hover {
+  color: var(--bluehover) !important;
+  border-color: var(--bluehover);
+}
+
+.nav-link.active {
+  border-color: var(--mapquizblue);
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+
+#logo {
+  height: 55px;
+  margin-right: 10px;
+}
+
+.nav-title {
+  padding: 0px !important;
+}
+
+.nav-title:active {
+  border-color: var(--mapquizblue);
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+
+.nav-title:hover {
+  border-color: var(--bluehover);
+}
+
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro {
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.video-container {
+  max-width: 500px;
+}
+
+.user-detail-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 16px;
+}
+
+.ui.form {
+  width: 350px;
+  margin-top: 20px;
 }
 
 .form-container {
@@ -100,6 +174,14 @@ div {
   transition: background-color 0.3s ease !important;
 }
 
+.btn:hover,
+.btn:active,
+.btn:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+}
+
 .affirm {
   background-color: var(--mapquizblue) !important;
 }
@@ -108,9 +190,6 @@ div {
 .affirm:active,
 .affirm:focus {
   background-color: var(--bluehover) !important;
-  outline: none !important;
-  outline-width: 0 !important;
-  box-shadow: none !important;
 }
 
 .deny {
@@ -121,20 +200,6 @@ div {
 .deny:active,
 .deny:focus {
   background-color: var(--lightgrey) !important;
-  outline: none !important;
-  outline-width: 0 !important;
-  box-shadow: none !important;
-}
-
-#logo {
-  height: 50px;
-}
-
-#login-modal {
-  margin: 0 auto;
-  top: 30% !important;
-  left: 20% !important;
-  right: 20% !important;
 }
 
 #sign-up {
@@ -143,86 +208,27 @@ div {
   left: 35% !important;
 }
 
-#dead-modal {
-  top: 30%;
+.ui.modal {
+  top: 35% !important;
+  left: 65% !important;
 }
 
-#score-modal {
-  top: 30%;
+.game-over {
+  flex-direction: row;
+  max-width: 500px;
 }
 
-#navbar {
-  height: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
+.game-over-actions {
+  display: flex;
+  white-space: nowrap;
 }
 
-#mapquiz-link {
-  font-size: 4rem !important;
-  font-weight: 600;
-  position: left;
-  text-align: left !important;
-  margin-left: 0.5em;
-  border-radius: 0;
-  align-self: flex-end;
-  padding: 10px;
-  display: inline-flex;
-  -webkit-box-align: center;
-  align-items: center;
-  box-sizing: inherit;
-  -webkit-box-direction: inherit;
-  float: left;
+.game-over-btn {
+  color: var(--mapquizblue) !important;
 }
 
-#mapquiz-link:active {
-  border-color: var(--mapquizblue);
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-}
-
-#mapquiz-link:hover {
-  border-color: var(--bluehover);
-}
-
-.nav-link {
-  font-size: 1.5rem !important;
-  margin-top: 1rem !important;
-  padding: 14px !important;
-  float: right;
-  box-shadow: none;
-  font-weight: 700;
-  border-radius: 0;
-  align-self: flex-end;
-  transition: color 0.1s;
-  display: inline-flex;
-  -webkit-box-align: center;
-  align-items: center;
-  box-sizing: inherit;
-  -webkit-box-direction: inherit;
-}
-
-a.nav-link:hover {
-  color: var(--bluehover) !important;
-  border-color: var(--bluehover);
-}
-
-.nav-link:active {
-  border-color: var(--mapquizblue);
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-}
-
-#login-button,
-#logout-button {
-  border: none;
-  border-radius: 5px;
-  margin: 14px !important;
-  box-shadow: 0 0 0 2px var(--mapquizblue) inset !important;
-}
-
-#login-button:hover,
-#logout-button:hover {
-  box-shadow: 0 0 0 2px var(--bluehover) inset !important;
+.modal-text {
+  text-align: center;
 }
 
 #city {

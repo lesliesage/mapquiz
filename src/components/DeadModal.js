@@ -4,33 +4,31 @@ import { NavLink } from "react-router-dom";
 
 const DeadModal = (props) => {
   return (
-    <Modal
-      id="dead-modal"
-      open={props.show}
-      basic
-      size="small"
-      centered={false}
-    >
-      <Header icon="thumbs down outline" content="Depleted Points" />
+    <Modal className="game-over" open={props.show}>
+      
+      <Header icon="thumbs down outline" content="Game Over" />
+
       <Modal.Content>
-        <p>YOU ARE DEAD</p>
+        <h3 className="modal-text">Points depleted.</h3>
       </Modal.Content>
-      <Modal.Actions>
-        <Button color="green" inverted onClick={props.resetPlay}>
+
+      <Modal.Actions className="game-over-actions">
+        <Button onClick={props.resetPlay} className="game-over-btn">
           <Icon name="checkmark" /> Try Again
         </Button>
 
-        <NavLink exact to="/">
-          <Button basic color="red" inverted>
+        <Button className="game-over-btn">
+          <NavLink exact to="/">
             <Icon name="home" /> Return to Home
-          </Button>
-        </NavLink>
+          </NavLink>
+        </Button>
 
-        <Button basic color="red" inverted onClick={props.closeModal}>
+        <Button onClick={props.closeModal} className="game-over-btn">
           <Icon name="remove" />
           Close
         </Button>
       </Modal.Actions>
+
     </Modal>
   );
 };
