@@ -6,7 +6,7 @@ if (hostname === "localhost") {
   apiHost = "http://localhost:3000";
 } else {
   apiHost =
-    process.env.REACT_APP_BACKEND_HOST || "https://mapquiz-api.herokuapp.com";
+    process.env.REACT_APP_BACKEND_HOST || "https://mapquiz-api.onrender.com";
 }
 
 export const API_ROOT = `${apiHost}`;
