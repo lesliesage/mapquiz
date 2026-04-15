@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Summary
+
+Started with: 
+Backend: Ruby on Rails 6 API with PostgreSQL, JWT auth, 4 tables (users, games, cities, questions)
+Frontend: React app configured to point to mapquiz-api.herokuapp.com
+Hosting: Firebase (frontend) + was Heroku (backend, now dead)
+
+Now:
+Deployed to Vercel
+
 ## Available Scripts
 
 In the project directory, you can run:
